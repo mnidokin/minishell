@@ -1,20 +1,68 @@
 #include "minishell.h"
 
-void	ft_envir_arr(char **str, char **res)
+t_envir		*ft_envir_lst(char **str)
 {
-	int	i;
-	int	len;
-	
+	t_envir *res;
+	t_envir *new;
+	int		i;
+
 	i = 0;
-	len = 0;
-	while (str[len])
-		len++;
-	if (!(res = ft_memalloc(len + 1)))
-		exit(2);
+	res = NULL;
+	new = NULL;
 	while (str[i])
 	{
-		res[i] = ft_strdup(str[i]);
+		new = ft_envir_init(str[i]);
+		ft_envir_shllchange(new);
+		ft_envir_lstaddback(&res, new);
 		i++;
 	}
-	res[i] = NULL;
+	return (res);
+}
+
+t_envir		*ft_envir_init(char *str)
+{
+	char	**n_v;
+	t_envir *res;
+
+	res = NULL;
+	n_v = NULL;
+	if (!(res = ft_memalloc(sizeof(t_envir))))
+		exit(2);
+	if (!(n_v = ft_strsplit(str, '=')))
+		exit(2);
+	if (!(res->name = ft_strdup(n_v[0])))
+		exit(2);
+	if (!(res->value = ft_strdup(n_v[1])))
+		exit(2);
+	res->next = NULL;
+	ft_strdel(&n_v[0]);
+	ft_strdel(&n_v[1]);
+	free(n_v);
+	return (res);
+}
+
+void		ft_envir_lstaddback(t_envir **envir, t_envir *new)
+{
+	t_envir *tmp;
+
+	if (*envir)
+	{
+		tmp = *envir;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	else
+		*envir = new;
+}
+
+void		ft_envir_shllchange(t_envir *envir)
+{
+	char *pwd;
+
+	pwd = ft_pwd(NULL);
+	if (!ft_strcmp(envir->name, "SHELL"))
+	{
+		envir->value = ft_strdup(pwd);
+	}
 }

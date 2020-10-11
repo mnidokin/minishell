@@ -85,12 +85,12 @@ all	: $(NAME)
 
 $(NAME) : $(OBJ)
 	@ ar -rc $(NAME) $(OBJ)
-	@ echo " \033[46;35;1m || \033[0m \c"
-	@ echo "\033[37;1;42;5m libft.a done \033[0m"
+	@ echo -e " \033[46;35;1m || \033[0m \c"
+	@ echo -e "\033[37;1;42m libft.a done \033[0m"
 
 %.o : %.c
-	@ gcc  -Wall -Werror -Wextra -o $@ -c $<
-	@ echo "\033[31m.\033[0m\c"
+	@ gcc  -g -Wall -Werror -Wextra -o $@ -c $<
+	@ echo -e "\033[31m.\033[0m\c"
 
 clean :
 	@ rm -f $(OBJ)

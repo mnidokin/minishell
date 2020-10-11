@@ -1,16 +1,25 @@
 #include "minishell.h"
 
+extern char		**environ;
+
 int	main(int ac, char **av)
 {
-	extern char		**environ;
-	char			**env_var;
+	t_envir	*envir;
 
-	ft_envir_arr(environ, env_var);
-	for(int i = 0; env_var != NULL; i++)
+	(void)ac;
+	(void)av;
+	envir = ft_envir_lst(environ);
+	while (envir)
 	{
-		ft_putstr(env_var[i]);
-		ft_putchar('\n');
+		if (!ft_strcmp(envir->name, "SHELL"))
+		{
+			ft_putstr(envir->name);
+			ft_putchar('=');
+			ft_putstr(envir->value);
+			ft_putchar('\n');
+		}
+		envir = envir->next;
 	}
-
+	//ft_free(&envir);
 	return (0);
 }
