@@ -12,7 +12,9 @@ SRC_DIR = ./src/
 SRC =	main.c \
 		ft_envir.c \
 		ft_free.c \
-		ft_pwd.c
+		ft_pwd.c \
+		ft_prompt.c \
+		ft_cmd.c
 
 BUILD_DIR = ./build/
 BUILD_OBJ = $(addprefix $(BUILD_DIR), $(SRC:.c=.o))

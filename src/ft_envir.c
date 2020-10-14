@@ -62,7 +62,5 @@ void		ft_envir_shllchange(t_envir *envir)
 
 	pwd = ft_pwd(NULL);
 	if (!ft_strcmp(envir->name, "SHELL"))
-	{
 		envir->value = ft_strdup(pwd);
-	}
 }

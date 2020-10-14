@@ -5,13 +5,22 @@ extern char		**environ;
 int	main(int ac, char **av)
 {
 	t_envir	*envir;
+	char	*cmd;
 
 	(void)ac;
 	(void)av;
 	envir = ft_envir_lst(environ);
-	while (envir)
+	(void)envir;
+	while (1)
 	{
-		if (!ft_strcmp(envir->name, "SHELL"))
+		ft_prompt();
+		ft_cmd_read(&cmd);
+		
+	}
+	
+	/*while (envir)
+	{
+		if (!ft_strcmp(envir->name, "PWD"))
 		{
 			ft_putstr(envir->name);
 			ft_putchar('=');
@@ -19,7 +28,7 @@ int	main(int ac, char **av)
 			ft_putchar('\n');
 		}
 		envir = envir->next;
-	}
+	}*/
 	//ft_free(&envir);
 	return (0);
 }
