@@ -26,5 +26,12 @@ void    ft_envir_lstaddback(t_envir **envir, t_envir *new);
 void	ft_envir_shllchange(t_envir *envir);
 void	ft_cmd_read(char **cmd);
 void	ft_str_addchr(char **str, char c, int len);
+int		ft_exe(char *str, t_envir *environ);
+int		ft_exe_cmdrun(char **cmd, char *path);
+int 	ft_space(char c);
+char	**ft_cmd_split(char *str);
+char 	**ft_word_eject(char *str);
+int		ft_word_count(char *str);
+int 	ft_word_len(char *str);
 
 #endif
