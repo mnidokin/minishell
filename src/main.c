@@ -14,6 +14,7 @@ int	main(int ac, char **av)
 	{
 		ft_prompt();
 		ft_cmd_read(&str);
+		ft_exe(str, envir);
 	}
 	return (0);
 }

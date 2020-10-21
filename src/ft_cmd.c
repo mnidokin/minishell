@@ -2,8 +2,8 @@
 
 void	ft_cmd_read(char **cmd)
 {
-	int	len;
-	char c;
+	int		len;
+	char	c;
 
 	len = 0;
 	while (1)

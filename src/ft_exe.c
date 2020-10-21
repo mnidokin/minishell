@@ -2,31 +2,27 @@
 
 int	ft_exe(char *str, t_envir *environ)
 {
-	char		**cmd_arr;
-	char		*cmd_path;
-	struct stat	file;
+	char	**commands;
+	char	**cmd_prm;
 
 	(void)environ;
-	if (!(cmd_arr = ft_strsplit(str, ';')))
+	if (!(commands = ft_strsplit(str, ';')))
 		exit(2);
-	if (lstat(*cmd_arr, &file))
+	while (*commands)
 	{
-		if (file.st_mode & S_IXUSR)
-		{
-			if (!(cmd_path = ft_strdup(*cmd_arr)))
-				exit(2);
-			return (ft_exe_cmdrun(cmd_arr, cmd_path));
-		}
+		if (!(cmd_prm = ft_cmd_split(*commands)))
+			exit(2);
+		ft_exe_cmd(cmd_prm);
+		commands++;
 	}
 	return (0);
 }
 
-int	ft_exe_cmdrun(char **cmd, char *path)
+int	ft_exe_cmd(char **cmd_prm)
 {
-	pid_t pid;
-
-	(void)cmd;
-	(void)path;
-	pid = fork();
+	if (fork() > 0)
+		wait(NULL);
+	else
+		execve(cmd_prm[0], cmd_prm, g_env);
 	return (0);
 }

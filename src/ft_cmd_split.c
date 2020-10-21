@@ -1,15 +1,15 @@
 #include "minishell.h"
 
-int ft_space(char c)
+int		ft_space(char c)
 {
 	if (c == '\v' || c == '\t' || c == '\r' || c == ' ')
 		return (0);
 	return (1);
 }
 
-char **ft_word_eject(char *str)
+char	**ft_word_eject(char *str)
 {
-	char **res;
+	char	**res;
 	int		row;
 	int		col;
 	int		wc;
@@ -21,7 +21,7 @@ char **ft_word_eject(char *str)
 	while (row < wc)
 	{
 		if (!(res[row] = (char *)malloc(sizeof(char) * (ft_word_len(str)))))
-			exit (2);
+			exit(2);
 		col = 0;
 		while (!ft_space(*str))
 			str++;
@@ -45,7 +45,7 @@ char	**ft_cmd_split(char *str)
 	return (res);
 }
 
-int	ft_word_count(char *str)
+int		ft_word_count(char *str)
 {
 	int res;
 
@@ -64,7 +64,7 @@ int	ft_word_count(char *str)
 	return (res);
 }
 
-int ft_word_len(char *str)
+int		ft_word_len(char *str)
 {
 	int res;
 

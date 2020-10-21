@@ -9,13 +9,18 @@ t_envir		*ft_envir_lst(char **str)
 	i = 0;
 	res = NULL;
 	new = NULL;
+	if (!(g_env = ft_memalloc(sizeof(char *) * ft_envir_strcount(str) + 1)))
+		exit(2);
 	while (str[i])
 	{
+		if (!(g_env[i] = ft_strdup(str[i])))
+			exit(2);
 		new = ft_envir_init(str[i]);
 		ft_envir_shllchange(new);
 		ft_envir_lstaddback(&res, new);
 		i++;
 	}
+	g_env[i] = NULL;
 	return (res);
 }
 
@@ -63,4 +68,14 @@ void		ft_envir_shllchange(t_envir *envir)
 	pwd = ft_pwd(NULL);
 	if (!ft_strcmp(envir->name, "SHELL"))
 		envir->value = ft_strdup(pwd);
+}
+
+int			ft_envir_strcount(char **str)
+{
+	int	res;
+
+	res = 0;
+	while (str[res])
+		res++;
+	return (res);
 }
