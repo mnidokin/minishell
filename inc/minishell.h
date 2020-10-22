@@ -35,4 +35,6 @@ char					**ft_word_eject(char *str);
 int						ft_word_count(char *str);
 int						ft_word_len(char *str);
 int						ft_exe_cmd(char **cmd_prm);
+int						ft_builtin(char *cmd);
+int						ft_exe_cve(char **cm_pr);
 #endif
