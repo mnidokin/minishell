@@ -26,14 +26,16 @@ int	ft_exe_cmd(char **cmd_prm)
 {
 	int res;
 
+	res = 0;
 	if ((res = ft_builtin(cmd_prm[0])) < 0)
 		return (-1);
-	else
-		res = ft_exe_cve(cmd_prm);
-	return (0);
+	else if (res == 0 | )
+	/*else
+		res = ft_exe_cve(cmd_prm);*/
+	return (res);
 }
 
-int	ft_exe_cve(char **cm_pr)
+int	ft_exe_cve(char *cmd, char **cm_pr)
 {
 	pid_t	pid;
 
@@ -46,6 +48,6 @@ int	ft_exe_cve(char **cm_pr)
 	else if (pid > 0)
 		wait(NULL);
 	else
-		execve(cm_pr[0], cm_pr, g_env);
+		execve(cmd, cm_pr, g_env);
 	return (1);
 }
