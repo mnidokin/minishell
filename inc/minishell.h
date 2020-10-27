@@ -68,8 +68,16 @@ int						ft_get_env(char **env, char *str, char **res);
 
 int						ft_builtin_setenv(char **cmd, char **env);
 int						ft_setenv(char **cmd, char **env);
-void 					ft_setenv_value(char **cmd, int index, char **env);
-void 					ft_setenv_nonvalue(char **cmd, int index, char **env);
-char 					**ft_setenv_expand(char **env);
+void 					ft_setenv_value(char **cmd, int index, char ***env);
+void 					ft_setenv_nonvalue(char **cmd, int index, char ***env);
+char 					**ft_setenv_expand(char ***env);
+
+/*
+** ft_unsetenv.c
+*/
+
+int						ft_builtin_unsetenv(char **cmd, char **env);
+int						ft_unsetenv(int	index, char ***env);
+char					**ft_unsetenv_suppress(char ***env);
 
 #endif

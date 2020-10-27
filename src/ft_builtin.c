@@ -8,6 +8,8 @@ int	ft_builtin(char **cmd, char **env)
 		return (ft_builtin_env(env));
 	else if (ft_strequ(cmd[0], "setenv"))
 		return (ft_builtin_setenv(cmd, env));
+	else if (ft_strequ(cmd[0], "unsetenv"))
+		return (ft_builtin_unsetenv(cmd, env));
 	return (0);
 }
 

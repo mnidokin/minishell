@@ -19,6 +19,7 @@ SRC =	main.c \
 		ft_path_parse.c \
 		ft_builtin.c \
 		ft_setenv.c \
+		ft_unsetenv.c \
 		ft_cmd.c
 
 BUILD_DIR = ./build/
