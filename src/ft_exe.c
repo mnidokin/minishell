@@ -1,53 +1,57 @@
 #include "minishell.h"
 
-int	ft_exe(char *str, t_envir *environ)
+int	ft_exe(char *str, t_envir *environ, char **env)
 {
 	char	**commands;
 	char	**cmd_prm;
 	int		res;
+	int		i;
 
 	(void)environ;
 	res = 0;
+	i = 0;
 	if (!(commands = ft_strsplit(str, ';')))
 		exit(2);
-	while (*commands)
+	while (commands[i])
 	{
 		if (!(cmd_prm = ft_cmd_split(*commands)))
 			exit(2);
-		res = ft_exe_cmd(cmd_prm);
+		res = ft_exe_cmd(cmd_prm, env);
 		if (res == -1)
-			break ;
-		commands++;
+		{
+			return (-1);
+		}
+		i++;
 	}
 	return (res);
 }
 
-int	ft_exe_cmd(char **cmd_prm)
+int	ft_exe_cmd(char **cmd_prm, char **env)
 {
 	int res;
 
 	res = 0;
-	if ((res = ft_builtin(cmd_prm[0])) < 0)
+	if ((res = ft_builtin(cmd_prm, env)) < 0)
 		return (-1);
-	else if (res == 0 | )
-	/*else
-		res = ft_exe_cve(cmd_prm);*/
+	if (res == 0)
+	{
+		res = ft_exe_cve(cmd_prm[0] ,cmd_prm, env);
+		return (res);
+	}
 	return (res);
 }
 
-int	ft_exe_cve(char *cmd, char **cm_pr)
+int	ft_exe_cve(char *cmd, char **cm_pr, char **env)
 {
-	pid_t	pid;
-
-	pid = fork();
-	if (pid < 0)
-	{
-		ft_putendl("Fork failed to create a new process.");
-		return (-1);
-	}
-	else if (pid > 0)
+	if (fork() != 0)
 		wait(NULL);
-	else
-		execve(cmd, cm_pr, g_env);
-	return (1);
+	if (access(cmd, 0) == 0)
+	{
+		if (access(cmd, 1) == 0)
+		{
+			execve(cmd, cm_pr, env);
+			return(1);
+		}
+	}
+	return (0);
 }

@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_envir		*ft_envir_lst(char **str)
+t_envir		*ft_envir_lst(char **src, char ***env)
 {
 	t_envir *res;
 	t_envir *new;
@@ -9,18 +9,18 @@ t_envir		*ft_envir_lst(char **str)
 	i = 0;
 	res = NULL;
 	new = NULL;
-	if (!(g_env = ft_memalloc(sizeof(char *) * ft_envir_strcount(str) + 1)))
+	if (!(*env = ft_memalloc(sizeof(char *) * ft_envir_strcount(src) + 1)))
 		exit(2);
-	while (str[i])
+	while (src[i])
 	{
-		if (!(g_env[i] = ft_strdup(str[i])))
+		if (!((*env)[i] = ft_strdup(src[i])))
 			exit(2);
-		new = ft_envir_init(str[i]);
+		new = ft_envir_init(src[i]);
 		ft_envir_shllchange(new);
 		ft_envir_lstaddback(&res, new);
 		i++;
 	}
-	g_env[i] = NULL;
+	(*env)[i] = NULL;
 	return (res);
 }
 

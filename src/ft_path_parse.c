@@ -1,31 +1,34 @@
 #include "minishell.h"
 
-char	**ft_path_parse(void)
+char	**ft_path_parse(char **env)
 {
 	char *str;
 	char **tmp;
 
-	str = ft_path_get();
+	ft_get_env(env, "PATH", &str);
 	tmp = ft_strsplit(str, ':');
 	return (tmp);
 }
 
-char	*ft_path_get(void)
+int		ft_get_env(char **env, char *str, char **res)
 {
 	int i;
-	char	*res;
 	char	**tmp;
+	char	*key;
 
 	i = 0;
-	while (g_env[i])
+	while (env[i])
 	{
-		if (ft_strncmp(g_env[i], "PATH=", 5) == 0)
+		key = ft_strjoin(str, "=");
+		if (ft_strncmp(env[i], key, 5) == 0)
 		{
-			if (!(tmp = ft_strsplit(g_env[i], '=')))
+			if (!(tmp = ft_strsplit(env[i], '=')))
 				exit(2);
-			return (res = ft_strdup(tmp[1]));
+			(*res) = ft_strdup(tmp[1]);
+			return (i);
 		}
+		free(key);
 		i++;
 	}
-	return (NULL);
+	return (i);
 }

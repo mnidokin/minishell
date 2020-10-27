@@ -18,6 +18,7 @@ SRC =	main.c \
 		ft_cmd_split.c \
 		ft_path_parse.c \
 		ft_builtin.c \
+		ft_setenv.c \
 		ft_cmd.c
 
 BUILD_DIR = ./build/
@@ -33,11 +34,11 @@ $(BUILD_DIR):
 
 $(NAME): $(LIB) $(BUILD_OBJ)
 	@ $(COMP) $(COMP_FLAG) -o $(NAME) $(BUILD_OBJ) $(LIB)
-	@ echo "\033[37;1;42m minishell done \033[0m"
+	@ echo -e "\033[37;1;42m minishell done \033[0m"
 
 $(BUILD_DIR)%.o : $(SRC_DIR)%.c
 	@ $(COMP) $(COMP_FLAG) $(INC) -o $@ -c $<
-	@ echo "\033[33m $< \033[0m"
+	@ echo -e "\033[33m $< \033[0m"
 
 $(LIB) :
 	@ make -sC ./libft/

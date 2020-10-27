@@ -1,22 +1,22 @@
 #include "minishell.h"
 
-extern char		**environ;
-
-int	main(int ac, char **av)
+int	main(int ac, char **av, char *envp[])
 {
 	t_envir	*envir;
+	char 	**env;
 	char	*str;
 
 	(void)av;
 	(void)ac;
-	envir = ft_envir_lst(environ);
+	env = NULL;
+	envir = ft_envir_lst(envp, &env);
 	while (1)
 	{
 		ft_prompt();
 		ft_cmd_read(&str);
 		if (!str)
 			ft_putstr("");
-		else if (ft_exe(str, envir) & (ft_strcmp(str, "\n") != 0))
+		else if (ft_exe(str, envir, env) == -1)
 			break ;
 	}
 	return (0);
