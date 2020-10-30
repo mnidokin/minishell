@@ -1,5 +1,10 @@
 #include "minishell.h"
 
+void	test(char **env)
+{
+	env = ft_setenv_expand(env);
+}
+
 int	main(int ac, char **av, char *envp[])
 {
 	t_envir	*envir;
@@ -16,7 +21,7 @@ int	main(int ac, char **av, char *envp[])
 		ft_cmd_read(&str);
 		if (!str)
 			ft_putstr("");
-		else if (ft_exe(str, envir, env) == -1)
+		else if (ft_exe(str, envir, &env) == -1)
 			break ;
 	}
 	return (0);

@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	ft_exe(char *str, t_envir *environ, char **env)
+int	ft_exe(char *str, t_envir *environ, char ***env)
 {
 	char	**commands;
 	char	**cmd_prm;
@@ -26,16 +26,20 @@ int	ft_exe(char *str, t_envir *environ, char **env)
 	return (res);
 }
 
-int	ft_exe_cmd(char **cmd_prm, char **env)
+int	ft_exe_cmd(char **cmd_prm, char ***env)
 {
 	int res;
 
 	res = 0;
-	if ((res = ft_builtin(cmd_prm, env)) < 0)
+	if ((ft_builtin(cmd_prm, env)) == 0)
+	{
+		return (0);
+	}
+	else
 		return (-1);
 	if (res == 0)
 	{
-		res = ft_exe_cve(cmd_prm[0] ,cmd_prm, env);
+		res = ft_exe_cve(cmd_prm[0] ,cmd_prm, *env);
 		return (res);
 	}
 	return (res);

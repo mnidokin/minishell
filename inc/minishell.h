@@ -44,15 +44,15 @@ char					**ft_cmd_split(char *str);
 char					**ft_word_eject(char *str);
 int						ft_word_count(char *str);
 int						ft_word_len(char *str);
-int						ft_builtin(char **cmd, char **env);
+int						ft_builtin(char **cmd, char ***env);
 int						ft_builtin_env(char **env);
 
 /*
 ** ft_exe.c
 */
 
-int						ft_exe(char *str, t_envir *environ, char **env);
-int						ft_exe_cmd(char **cmd_prm, char **env);
+int						ft_exe(char *str, t_envir *environ, char ***env);
+int						ft_exe_cmd(char **cmd_prm, char ***env);
 int						ft_exe_cve(char *cmd, char **cm_pr, char **env);
 
 /*
@@ -66,18 +66,20 @@ int						ft_get_env(char **env, char *str, char **res);
 ** ft_setenv.c
 */
 
-int						ft_builtin_setenv(char **cmd, char **env);
-int						ft_setenv(char **cmd, char **env);
-void 					ft_setenv_value(char **cmd, int index, char ***env);
-void 					ft_setenv_nonvalue(char **cmd, int index, char ***env);
-char 					**ft_setenv_expand(char ***env);
+int						ft_builtin_setenv(char **cmd, char ***env);
+int						ft_setenv(char **cmd, char ***env);
+char 					**ft_setenv_value(char **cmd, int index, char **env);
+char					**ft_setenv_nonvalue(char **cmd, int index, char **env);
+char 					**ft_setenv_expand(char **env);
 
 /*
 ** ft_unsetenv.c
 */
 
 int						ft_builtin_unsetenv(char **cmd, char **env);
-int						ft_unsetenv(int	index, char ***env);
-char					**ft_unsetenv_suppress(char ***env);
+int						ft_unsetenv(int	index, char **env);
+char					**ft_unsetenv_suppress(char **env);
 
+int	ft_test_index(char **env, char **cmd);
+int	ft_test_index_num(char **env, int index);
 #endif
