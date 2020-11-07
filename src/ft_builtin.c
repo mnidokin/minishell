@@ -14,6 +14,8 @@ int	ft_builtin(char **cmd, char ***env)
 		return (ft_test_index_num(*env, ft_atoi(cmd[1])));
 	else if (ft_strequ(cmd[0], "env"))
 		return (ft_builtin_env(*env));
+	else if (ft_strequ(cmd[0], "cd"))
+		return (ft_builtin_cd(cmd, env));
 	return (0);
 }
 

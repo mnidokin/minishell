@@ -80,6 +80,12 @@ int						ft_builtin_unsetenv(char **cmd, char **env);
 int						ft_unsetenv(int	index, char **env);
 char					**ft_unsetenv_suppress(char **env);
 
+/*
+** ft_cd.c
+*/
+
+int	ft_builtin_cd(char **cmd, char ***env);
+
 int	ft_test_index(char **env, char **cmd);
 int	ft_test_index_num(char **env, int index);
 #endif

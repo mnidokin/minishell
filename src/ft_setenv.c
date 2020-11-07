@@ -96,9 +96,9 @@ char **ft_setenv_expand(char **env)
 	{
 		if (!(res[i] = ft_strdup((env)[i])))
 			exit(2);
-		free(env[i]);
+		//free(env[i]);
 		i++;
 	}
-	free(env);
+	//free(env);
 	return (res);
 }
