@@ -26,6 +26,7 @@ typedef struct			s_envir
 void					ft_prompt(void);
 void					ft_free(t_envir **envir);
 char					*ft_pwd(char *pwd);
+int						ft_builtin_pwd(char **env);
 
 /*
 ** ft_envir.c
@@ -84,7 +85,9 @@ char					**ft_unsetenv_suppress(char **env);
 ** ft_cd.c
 */
 
-int	ft_builtin_cd(char **cmd, char ***env);
+int						ft_builtin_cd(char **cmd, char ***env);
+int 					ft_ch_dr(char *pth, char ***env);
+int						ft_set_pwd(char ***env, char *env_name, char *pth);
 
 int	ft_test_index(char **env, char **cmd);
 int	ft_test_index_num(char **env, int index);
