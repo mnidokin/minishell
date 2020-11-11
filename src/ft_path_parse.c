@@ -10,6 +10,20 @@ char	**ft_path_parse(char **env)
 	return (tmp);
 }
 
+int	ft_fullpath_check(char *cmd, char *full_path)
+{
+	int index;
+
+	index = 0;
+	while (full_path[index])
+	{
+		if (cmd[index] != full_path[index])
+			return (-1);
+		index++;
+	}
+	return (0);
+}
+
 int		ft_get_env(char **env, char *str, char **res)
 {
 	int i;

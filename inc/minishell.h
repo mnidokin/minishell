@@ -62,6 +62,8 @@ int						ft_exe_cve(char *cmd, char **cm_pr, char **env);
 
 char					**ft_path_parse(char **env);
 int						ft_get_env(char **env, char *str, char **res);
+char *ft_exe_chek_path(char **paths, char *cmd_prm);
+int	ft_fullpath_check(char *cmd, char *full_path);
 
 /*
 ** ft_setenv.c
@@ -88,6 +90,10 @@ char					**ft_unsetenv_suppress(char **env);
 int						ft_builtin_cd(char **cmd, char ***env);
 int 					ft_ch_dr(char *pth, char ***env);
 int						ft_set_pwd(char ***env, char *env_name, char *pth);
+
+int ft_builtin_echo(char **cmd);
+int ft_echo(int iter, char **cmd);
+int	ft_putnstr(char *str, long int n);
 
 int	ft_test_index(char **env, char **cmd);
 int	ft_test_index_num(char **env, int index);
