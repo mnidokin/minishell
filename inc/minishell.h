@@ -79,8 +79,8 @@ char 					**ft_setenv_expand(char **env);
 ** ft_unsetenv.c
 */
 
-int						ft_builtin_unsetenv(char **cmd, char **env);
-int						ft_unsetenv(int	index, char **env);
+int						ft_builtin_unsetenv(char **cmd, char ***env);
+int						ft_unsetenv(int	index, char ***env);
 char					**ft_unsetenv_suppress(char **env);
 
 /*
@@ -91,9 +91,10 @@ int						ft_builtin_cd(char **cmd, char ***env);
 int 					ft_ch_dr(char *pth, char ***env);
 int						ft_set_pwd(char ***env, char *env_name, char *pth);
 
-int ft_builtin_echo(char **cmd);
-int ft_echo(int iter, char **cmd);
+int ft_builtin_echo(char **cmd, char **env);
+int ft_echo(int iter, char **cmd, char **env);
 int	ft_putnstr(char *str, long int n);
+char *ft_echo_var(char *str, char **env);
 
 int	ft_test_index(char **env, char **cmd);
 int	ft_test_index_num(char **env, int index);

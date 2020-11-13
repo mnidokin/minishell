@@ -71,12 +71,14 @@ char	**ft_setenv_nonvalue(char **cmd, int index, char **env)
 		free(env[index]);
 		if (!(env[index] = ft_strdup(tmp)))
 			exit(2);
+		env[index + 1] = NULL;
 	}
 	else
 	{
 		env = ft_setenv_expand(env);
 		if (!(env[index] = ft_strdup(tmp)))
 			exit(2);
+		env[index + 1] = NULL;
 	}
 	free(tmp);
 	return (env);

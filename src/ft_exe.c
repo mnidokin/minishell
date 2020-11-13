@@ -32,17 +32,19 @@ int	ft_exe_cmd(char **cmd_prm, char ***env)
 
 	res = 0;
 	if ((res = ft_builtin(cmd_prm, env)) == 0)
-	{
 		return (0);
-	}
 	else if (res == -1)
 		return (-1);
-	if (res == 1)
+	if (res == 9)
 	{
 		path = ft_path_parse(*env);
-		path_to_exe = ft_exe_chek_path(path, cmd_prm[0]);
-		res = ft_exe_cve(path_to_exe, cmd_prm, *env);
-		return (res);
+		if ((path_to_exe = ft_exe_chek_path(path, cmd_prm[0])) != NULL)
+			res = ft_exe_cve(path_to_exe, cmd_prm, *env);
+	}
+	if (res == 9)
+	{
+		ft_putstr("minishell: command not found: ");
+		ft_putendl(cmd_prm[0]);
 	}
 	return (res);
 }
@@ -81,7 +83,7 @@ char *ft_exe_chek_path(char **paths, char *cmd_prm)
 	tmp = NULL;
 	while (paths[index])
 	{
-		if (ft_fullpath_check(cmd_prm, paths[index]))
+		if (!ft_fullpath_check(cmd_prm, paths[index]))
 		{
 			res = ft_strdup(cmd_prm);
 		}
@@ -93,7 +95,9 @@ char *ft_exe_chek_path(char **paths, char *cmd_prm)
 		if (lstat(res, &file) == -1)
 		{
 			if (res)
+			{
 				free(res);
+			}
 		}
 		else 
 		{
@@ -101,11 +105,13 @@ char *ft_exe_chek_path(char **paths, char *cmd_prm)
 			if (file.st_mode & S_IFREG)
 			{
 				if (file.st_mode & S_IXUSR)
+				{
 					return (res);
+				}
 			}
 		}
 		index++;
 	}
 	free(tmp);
-	return (res);
+	return (NULL);
 }
