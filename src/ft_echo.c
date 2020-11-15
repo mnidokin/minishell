@@ -20,29 +20,34 @@ int ft_builtin_echo(char **cmd, char **env)
 	while (cmd[iter])
 	{
 		ft_echo(iter, cmd, env);
-		if (!newline_f)
-			ft_putendl("");
 		iter++;
 	}
+	if (!newline_f)
+			ft_putendl("");
 	return (0);
 }
 
 int ft_echo(int iter, char **cmd, char **env)
 {
 	int len;
+	int quote_flag;
 
 	len = ft_strlen(cmd[iter]);
-	if ((cmd[iter][0] == '"' || cmd[iter][0] == '\'') &&
-		(cmd[iter][len - 1] == '"' || cmd[iter][len - 1] == '\''))
-		{
-			ft_putnstr(cmd[iter] + 1, len - 2);
-		}
+	quote_flag = ft_quote_chek(cmd[iter], len);
+	if (quote_flag == 1)
+		ft_putnstr(cmd[iter] + 1, len - 2);
+	else if (quote_flag == 2)
+		ft_putstr(cmd[iter] + 1);
+	else if (quote_flag == 3)
+		ft_putnstr(cmd[iter], len - 1);
 	else
 	{
 		if (cmd[iter][0] == '$' && cmd[iter][1])
 			cmd[iter] = ft_echo_var((cmd[iter] + 1), env);
 		ft_putstr(cmd[iter]);
 	}
+	if (cmd[iter + 1])
+		ft_putchar(' ');
 	return (0);
 }
 static int ft_putchar_test(char c)
@@ -66,4 +71,16 @@ char *ft_echo_var(char *str, char **env)
 
 	index = ft_get_env(env, str, &res);
 	return (res);
+}
+
+int ft_quote_chek(char *str, int len)
+{
+	if ((str[0] == '"' || str[0] == '\'') &&
+		(str[len - 1] == '"' || str[len - 1] == '\''))
+		return (1);
+	else if ((str[0] == '"' || str[0] == '\''))
+		return (2);
+	else if ((str[len - 1] == '"' || str[len - 1] == '\''))
+		return (3);
+	return (0);
 }
