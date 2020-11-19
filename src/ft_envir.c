@@ -2,8 +2,8 @@
 
 int	ft_env_init(char **src, char ***env)
 {
-	int		i;
-	
+	int	i;
+
 	i = 0;
 	if (!(*env = ft_memalloc(sizeof(char *) * ft_envir_strcount(src) + 1)))
 		exit(2);
@@ -17,7 +17,7 @@ int	ft_env_init(char **src, char ***env)
 	return (0);
 }
 
-int			ft_envir_strcount(char **str)
+int	ft_envir_strcount(char **str)
 {
 	int	res;
 

@@ -24,7 +24,7 @@ char	**ft_word_eject(char *str)
 			exit(2);
 		col = 0;
 		while (!ft_space(*str))
-		{	
+		{
 			str++;
 		}
 		while (*str && ft_space(*str))

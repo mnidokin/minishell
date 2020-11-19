@@ -2,7 +2,7 @@
 
 int	main(int ac, char **av, char *envp[])
 {
-	char 	**env;
+	char	**env;
 	char	*str;
 	int		brake_point;
 

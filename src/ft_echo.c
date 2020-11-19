@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int ft_builtin_echo(char **cmd, char **env)
+int		ft_builtin_echo(char **cmd, char **env)
 {
 	int newline_f;
 	int	iter;
@@ -23,15 +23,15 @@ int ft_builtin_echo(char **cmd, char **env)
 		iter++;
 	}
 	if (!newline_f)
-			ft_putendl("");
+		ft_putendl("");
 	return (0);
 }
 
-int ft_echo(int iter, char **cmd, char **env)
+int		ft_echo(int iter, char **cmd, char **env)
 {
-	int len;
-	int quote_flag;
-	char *env_var;
+	int		len;
+	int		quote_flag;
+	char	*env_var;
 
 	len = ft_strlen(cmd[iter]);
 	quote_flag = ft_quote_chek(cmd[iter], len);
@@ -59,13 +59,14 @@ int ft_echo(int iter, char **cmd, char **env)
 		ft_putchar(' ');
 	return (0);
 }
-static int ft_putchar_test(char c)
+
+int		ft_putchar_test(char c)
 {
 	write(1, &c, 1);
 	return (0);
 }
 
-int	ft_putnstr(char *str, long int n)
+int		ft_putnstr(char *str, long int n)
 {
 	if (str == NULL || n == 0)
 		return (0);
@@ -73,10 +74,10 @@ int	ft_putnstr(char *str, long int n)
 		return (ft_putchar_test(*str) + ft_putnstr(str + 1, n - 1));
 }
 
-char *ft_echo_var(char *str, char **env)
+char	*ft_echo_var(char *str, char **env)
 {
-	char *res;
-	int index;
+	char	*res;
+	int		index;
 
 	index = ft_get_env(env, str, &res);
 	if (index == -1)
@@ -84,7 +85,7 @@ char *ft_echo_var(char *str, char **env)
 	return (res);
 }
 
-int ft_quote_chek(char *str, int len)
+int		ft_quote_chek(char *str, int len)
 {
 	if ((str[0] == '"' || str[0] == '\'') &&
 		(str[len - 1] == '"' || str[len - 1] == '\''))

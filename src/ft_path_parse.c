@@ -3,8 +3,8 @@
 char	**ft_path_parse(char **env)
 {
 	int		index;
-	char *str;
-	char **tmp;
+	char	*str;
+	char	**tmp;
 
 	index = ft_get_env(env, "PATH", &str);
 	if (index == -1)
@@ -17,7 +17,7 @@ char	**ft_path_parse(char **env)
 	return (tmp);
 }
 
-int	ft_fullpath_check(char *cmd, char *full_path)
+int		ft_fullpath_check(char *cmd, char *full_path)
 {
 	int index;
 
@@ -33,7 +33,7 @@ int	ft_fullpath_check(char *cmd, char *full_path)
 
 int		ft_get_env(char **env, char *str, char **res)
 {
-	int i;
+	int		i;
 	char	**tmp;
 	char	*key;
 

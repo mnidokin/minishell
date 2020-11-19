@@ -35,7 +35,7 @@ int		ft_remove_var(int index, char ***env)
 			(*env)[i] = NULL;
 		}
 		if (!((*env)[i] = ft_strdup((*env)[i + 1])))
-			exit (2);
+			exit(2);
 		i++;
 		str_count++;
 	}
@@ -44,18 +44,18 @@ int		ft_remove_var(int index, char ***env)
 	return (0);
 }
 
-char **ft_env_realloc(int size, char ***env)
+char	**ft_env_realloc(int size, char ***env)
 {
-	char **res;
-	int i;
+	char	**res;
+	int		i;
 
 	if (!(res = (char **)ft_memalloc(sizeof(char *) * (size + 1))))
-		exit (2);
+		exit(2);
 	i = 0;
-	while((*env)[i] && i < size)
+	while ((*env)[i] && i < size)
 	{
 		if (!(res[i] = ft_strdup((*env)[i])))
-			exit (2);
+			exit(2);
 		free((*env)[i]);
 		i++;
 	}

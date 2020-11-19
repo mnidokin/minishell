@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	ft_exe(char *str, char ***env)
+int		ft_exe(char *str, char ***env)
 {
 	char	**cmd_prm;
 	int		res;
@@ -20,16 +20,16 @@ int	ft_exe(char *str, char ***env)
 	return (res);
 }
 
-int	ft_exe_cmd(char **cmd_prm, char ***env)
+int		ft_exe_cmd(char **cmd_prm, char ***env)
 {
-	int res;
-	char **path;
-	char *path_to_exe;
-	struct stat file;
+	int			res;
+	char		**path;
+	char		*path_to_exe;
+	struct stat	file;
 
 	if (!cmd_prm[0])
 	{
-		return(0);
+		return (0);
 	}
 	path = NULL;
 	res = -999;
@@ -53,7 +53,6 @@ int	ft_exe_cmd(char **cmd_prm, char ***env)
 					if (file.st_mode & S_IXUSR)
 						res = ft_exe_cve(cmd_prm[0], cmd_prm, *env);
 			}
-
 		}
 		if (path)
 			ft_free_mattr(path);
@@ -66,11 +65,11 @@ int	ft_exe_cmd(char **cmd_prm, char ***env)
 	return (res);
 }
 
-int	ft_exe_cve(char *cmd, char **cm_pr, char **env)
+int		ft_exe_cve(char *cmd, char **cm_pr, char **env)
 {
 	pid_t	pid;
 
-	if((pid = fork()) == 0)
+	if ((pid = fork()) == 0)
 	{
 		if (access(cmd, 0) == 0)
 			if (access(cmd, 1) == 0)
@@ -82,12 +81,12 @@ int	ft_exe_cve(char *cmd, char **cm_pr, char **env)
 	return (0);
 }
 
-char *ft_exe_chek_path(char **paths, char *cmd_prm)
+char	*ft_exe_chek_path(char **paths, char *cmd_prm)
 {
-	int index;
-	char *res;
-	char *tmp;
-	struct stat file;
+	int			index;
+	char		*res;
+	char		*tmp;
+	struct stat	file;
 
 	index = 0;
 	res = NULL;
@@ -107,7 +106,7 @@ char *ft_exe_chek_path(char **paths, char *cmd_prm)
 			if (res)
 				free(res);
 		}
-		else 
+		else
 		{
 			if (file.st_mode & S_IFREG)
 			{
@@ -120,7 +119,7 @@ char *ft_exe_chek_path(char **paths, char *cmd_prm)
 	return (NULL);
 }
 
-int	ft_free_mattr(char **mattr)
+int		ft_free_mattr(char **mattr)
 {
 	int index;
 

@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	ft_builtin_setenv(char **cmd, char ***env)
+int		ft_builtin_setenv(char **cmd, char ***env)
 {
 	if (!cmd[1])
 		return (ft_builtin_env(*env));
@@ -17,7 +17,7 @@ int	ft_builtin_setenv(char **cmd, char ***env)
 	return (-1);
 }
 
-int	ft_setenv(char **cmd, char ***env)
+int		ft_setenv(char **cmd, char ***env)
 {
 	int		index;
 
@@ -31,7 +31,7 @@ int	ft_setenv(char **cmd, char ***env)
 	return (0);
 }
 
-char **ft_setenv_value(char **cmd, int index, char **env)
+char	**ft_setenv_value(char **cmd, int index, char **env)
 {
 	char	*tmp;
 	char	*str;
@@ -63,8 +63,8 @@ char **ft_setenv_value(char **cmd, int index, char **env)
 
 char	**ft_setenv_nonvalue(char **cmd, int index, char **env)
 {
-	char *tmp;
-	int	index_add;
+	char	*tmp;
+	int		index_add;
 
 	if (!(tmp = ft_strjoin(cmd[1], "=")))
 		exit(2);
@@ -86,7 +86,7 @@ char	**ft_setenv_nonvalue(char **cmd, int index, char **env)
 	return (env);
 }
 
-char **ft_setenv_expand(char **env)
+char	**ft_setenv_expand(char **env)
 {
 	char	**res;
 	int		size;

@@ -11,7 +11,6 @@ INC = -I ./libft/ -I ./inc/
 SRC_DIR = ./src/
 SRC =	main.c \
 		ft_envir.c \
-		ft_free.c \
 		ft_pwd.c \
 		ft_prompt.c \
 		ft_exe.c \
