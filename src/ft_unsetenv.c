@@ -4,7 +4,7 @@ int		ft_builtin_unsetenv(char **cmd, char ***env)
 {
 	int	index_env;
 
-	if (!cmd[0])
+	if (!cmd[1])
 	{
 		ft_putendl_fd("unsetenv: Too few arguments", 2);
 		return (0);

@@ -12,7 +12,10 @@ int	ft_exe(char *str, char ***env)
 		exit(2);
 	res = ft_exe_cmd(cmd_prm, env);
 	if (res == -1)
+	{
+		ft_free_mattr(cmd_prm);
 		return (-1);
+	}
 	ft_free_mattr(cmd_prm);
 	return (res);
 }
