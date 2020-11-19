@@ -21,6 +21,10 @@ SRC =	main.c \
 		ft_unsetenv.c \
 		ft_cd.c \
 		ft_echo.c \
+		ft_putnstr.c \
+		ft_free.c \
+		ft_cd_aux.c \
+		ft_exe_aux.c \
 		ft_cmd.c
 
 BUILD_DIR = ./build/

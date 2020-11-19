@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:53 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 22:56:53 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/19 23:51:41 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,8 @@ int		ft_echo(int iter, char **cmd, char **env)
 	char	*env_var;
 
 	len = ft_strlen(cmd[iter]);
-	quote_flag = ft_quote_chek(cmd[iter], len);
-	if (quote_flag == 1)
-		ft_putnstr(cmd[iter] + 1, len - 2);
-	else if (quote_flag == 2)
-		ft_putstr(cmd[iter] + 1);
-	else if (quote_flag == 3)
-		ft_putnstr(cmd[iter], len - 1);
+	if ((quote_flag = ft_quote_chek(cmd[iter], len)) != 0)
+		ft_quote(quote_flag, iter, len, cmd);
 	else
 	{
 		if (cmd[iter][0] == '$' && cmd[iter][1])
@@ -72,20 +67,6 @@ int		ft_echo(int iter, char **cmd, char **env)
 	return (0);
 }
 
-int		ft_putchar_test(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
-int		ft_putnstr(char *str, long int n)
-{
-	if (str == NULL || n == 0)
-		return (0);
-	else
-		return (ft_putchar_test(*str) + ft_putnstr(str + 1, n - 1));
-}
-
 char	*ft_echo_var(char *str, char **env)
 {
 	char	*res;
@@ -95,6 +76,17 @@ char	*ft_echo_var(char *str, char **env)
 	if (index == -1)
 		return (NULL);
 	return (res);
+}
+
+int		ft_quote(int quote_flag, int iter, int len, char **cmd)
+{
+	if (quote_flag == 1)
+		ft_putnstr(cmd[iter] + 1, len - 2);
+	else if (quote_flag == 2)
+		ft_putstr(cmd[iter] + 1);
+	else if (quote_flag == 3)
+		ft_putnstr(cmd[iter], len - 1);
+	return (0);
 }
 
 int		ft_quote_chek(char *str, int len)

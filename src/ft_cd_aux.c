@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cd_aux.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 00:05:21 by mnidokin         ###   ########.fr       */
+/*   Created: 2020/11/19 23:29:33 by mnidokin          #+#    #+#             */
+/*   Updated: 2020/11/19 23:29:58 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int ac, char **av, char *envp[])
+int		ft_cd_tilda(char ***env, char **cmd)
 {
-	char	**env;
-	char	*str;
-	int		brake_point;
+	char	*full_path;
+	char	*home_path;
+	int		res;
 
-	(void)av;
-	(void)ac;
-	brake_point = 0;
-	env = NULL;
-	ft_env_init(envp, &env);
-	while (1)
-	{
-		ft_prompt();
-		ft_cmd_read(&str);
-		if (!str)
-		{
-			ft_putstr("");
-			continue ;
-		}
-		if ((brake_point = ft_exe(str, &env)) == -1)
-			break ;
-		free(str);
-	}
-	free(str);
-	ft_free_mattr(env);
-	return (0);
+	ft_get_env(*env, "HOME", &home_path);
+	full_path = ft_cd_homereplace(cmd[0], home_path);
+	res = ft_ch_dr(full_path, env);
+	free(full_path);
+	free(home_path);
+	return (res);
+}
+
+int		ft_cd_home(char ***env)
+{
+	char	*home_path;
+	int		res;
+
+	ft_get_env(*env, "OLDPWD", &home_path);
+	res = ft_ch_dr(home_path, env);
+	free(home_path);
+	return (res);
 }

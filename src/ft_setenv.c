@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:57:26 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 22:57:27 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/19 23:12:09 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	**ft_setenv_value(char **cmd, int index, char **env)
 	char	*str;
 	int		index_add;
 
-	tmp = NULL;
 	if (!(tmp = ft_strjoin(cmd[1], "=")))
 		exit(2);
 	if (!(str = ft_strjoin(tmp, cmd[2])))

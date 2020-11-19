@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 22:55:49 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/19 23:53:35 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,15 @@ int						ft_set_pwd(char ***env, char *env_name, char *pth);
 char					*ft_cd_homereplace(char *cmd, char *home_path);
 int						ft_builtin_echo(char **cmd, char **env);
 int						ft_echo(int iter, char **cmd, char **env);
-int						ft_putnstr(char *str, long int n);
+int						ft_putnstr(char *str, int n);
+int						ft_putchar_recur(char c);
 char					*ft_echo_var(char *str, char **env);
 int						ft_quote_chek(char *str, int len);
+int						ft_quote(int quote_flag, int iter, int len, char **cmd);
+void					ft_cd_error(char *pth);
+int						ft_cd_tilda(char ***env, char **cmd);
+int						ft_cd_home(char ***env);
+char					*ft_exe_path_try(char *path, char *cmd_prm);
+int						ft_exe_notbuiltin(char ***env, char **cmd_prm, int res);
 
 #endif

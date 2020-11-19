@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 00:05:21 by mnidokin         ###   ########.fr       */
+/*   Created: 2020/11/19 23:14:06 by mnidokin          #+#    #+#             */
+/*   Updated: 2020/11/19 23:30:17 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int ac, char **av, char *envp[])
+int		ft_free_mattr(char **mattr)
 {
-	char	**env;
-	char	*str;
-	int		brake_point;
+	int index;
 
-	(void)av;
-	(void)ac;
-	brake_point = 0;
-	env = NULL;
-	ft_env_init(envp, &env);
-	while (1)
+	index = 0;
+	while (mattr[index])
 	{
-		ft_prompt();
-		ft_cmd_read(&str);
-		if (!str)
-		{
-			ft_putstr("");
-			continue ;
-		}
-		if ((brake_point = ft_exe(str, &env)) == -1)
-			break ;
-		free(str);
+		free(mattr[index]);
+		index++;
 	}
-	free(str);
-	ft_free_mattr(env);
+	free(mattr);
 	return (0);
 }

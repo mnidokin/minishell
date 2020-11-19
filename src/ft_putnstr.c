@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 00:05:21 by mnidokin         ###   ########.fr       */
+/*   Created: 2020/11/19 23:00:38 by mnidokin          #+#    #+#             */
+/*   Updated: 2020/11/19 23:01:36 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int ac, char **av, char *envp[])
+int		ft_putchar_recur(char c)
 {
-	char	**env;
-	char	*str;
-	int		brake_point;
-
-	(void)av;
-	(void)ac;
-	brake_point = 0;
-	env = NULL;
-	ft_env_init(envp, &env);
-	while (1)
-	{
-		ft_prompt();
-		ft_cmd_read(&str);
-		if (!str)
-		{
-			ft_putstr("");
-			continue ;
-		}
-		if ((brake_point = ft_exe(str, &env)) == -1)
-			break ;
-		free(str);
-	}
-	free(str);
-	ft_free_mattr(env);
+	write(1, &c, 1);
 	return (0);
+}
+
+int		ft_putnstr(char *str, int n)
+{
+	if (str == NULL || n == 0)
+		return (0);
+	else
+		return (ft_putchar_recur(*str) + ft_putnstr(str + 1, n - 1));
 }

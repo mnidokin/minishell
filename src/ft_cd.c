@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:39 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 22:56:39 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/19 23:51:16 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,22 @@
 int		ft_builtin_cd(char **cmd, char ***env)
 {
 	char	*home_pth;
-	char	*full_path;
 	int		res;
 
 	cmd += 1;
-	ft_get_env(*env, "HOME", &home_pth);
 	if (!cmd[0] || ft_strequ(cmd[0], "--"))
 	{
+		ft_get_env(*env, "HOME", &home_pth);
 		res = ft_ch_dr(home_pth, env);
 		free(home_pth);
 		return (res);
 	}
 	else if (cmd[0][0] == '-' && !cmd[0][1])
-	{
-		free(home_pth);
-		ft_get_env(*env, "OLDPWD", &home_pth);
-		res = ft_ch_dr(home_pth, env);
-		free(home_pth);
-		return (res);
-	}
+		return (ft_cd_home(env));
 	else if (cmd[0][0] == '~')
-	{
-		full_path = ft_cd_homereplace(cmd[0], home_pth);
-		res = ft_ch_dr(full_path, env);
-		free(full_path);
-		free(home_pth);
-		return (res);
-	}
+		return (ft_cd_tilda(env, cmd));
 	else
-	{
-		free(home_pth);
-		res = ft_ch_dr(*cmd, env);
-		return (res);
-	}
+		return (ft_ch_dr(*cmd, env));
 	return (0);
 }
 
@@ -62,16 +45,7 @@ int		ft_ch_dr(char *pth, char ***env)
 	path_src = (ft_pwd(buf));
 	chdir_res = chdir(pth);
 	if (chdir_res == -1)
-	{
-		ft_putstr("cd: ");
-		if (access(pth, 0) < 0)
-			ft_putstr_fd("no such file or directory: ", 2);
-		else if (access(pth, 1) < 0)
-			ft_putstr_fd("permission denied: ", 2);
-		else
-			ft_putstr_fd("not a directory: ", 2);
-		ft_putendl_fd(pth, 2);
-	}
+		ft_cd_error(pth);
 	else if (chdir_res == 0)
 	{
 		path_dest = (ft_pwd(buf));
@@ -81,6 +55,18 @@ int		ft_ch_dr(char *pth, char ***env)
 	}
 	free(path_src);
 	return (0);
+}
+
+void	ft_cd_error(char *pth)
+{
+	ft_putstr("cd: ");
+	if (access(pth, 0) < 0)
+		ft_putstr_fd("no such file or directory: ", 2);
+	else if (access(pth, 1) < 0)
+		ft_putstr_fd("permission denied: ", 2);
+	else
+		ft_putstr_fd("not a directory: ", 2);
+	ft_putendl_fd(pth, 2);
 }
 
 int		ft_set_pwd(char ***env, char *env_name, char *pth)
