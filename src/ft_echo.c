@@ -31,6 +31,7 @@ int ft_echo(int iter, char **cmd, char **env)
 {
 	int len;
 	int quote_flag;
+	char *env_var;
 
 	len = ft_strlen(cmd[iter]);
 	quote_flag = ft_quote_chek(cmd[iter], len);
@@ -43,8 +44,16 @@ int ft_echo(int iter, char **cmd, char **env)
 	else
 	{
 		if (cmd[iter][0] == '$' && cmd[iter][1])
-			cmd[iter] = ft_echo_var((cmd[iter] + 1), env);
-		ft_putstr(cmd[iter]);
+		{
+			env_var = ft_echo_var((cmd[iter] + 1), env);
+			if (env_var)
+			{
+				ft_putstr(env_var);
+				free(env_var);
+			}
+		}
+		else
+			ft_putstr(cmd[iter]);
 	}
 	if (cmd[iter + 1])
 		ft_putchar(' ');
@@ -70,6 +79,8 @@ char *ft_echo_var(char *str, char **env)
 	int index;
 
 	index = ft_get_env(env, str, &res);
+	if (index == -1)
+		return (NULL);
 	return (res);
 }
 

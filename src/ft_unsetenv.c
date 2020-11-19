@@ -10,7 +10,7 @@ int		ft_builtin_unsetenv(char **cmd, char ***env)
 		return (0);
 	}
 	index_env = ft_get_env(*env, cmd[1], NULL);
-	if ((*env)[index_env])
+	if (index_env != -1 && (*env)[index_env])
 	{
 		return (ft_remove_var(index_env, env));
 	}
@@ -44,7 +44,7 @@ int		ft_remove_var(int index, char ***env)
 	return (0);
 }
 
-char **	ft_env_realloc(int size, char ***env)
+char **ft_env_realloc(int size, char ***env)
 {
 	char **res;
 	int i;
@@ -59,6 +59,7 @@ char **	ft_env_realloc(int size, char ***env)
 		free((*env)[i]);
 		i++;
 	}
+	free((*env)[i]);
 	free(*env);
 	return (res);
 }

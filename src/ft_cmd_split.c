@@ -24,7 +24,9 @@ char	**ft_word_eject(char *str)
 			exit(2);
 		col = 0;
 		while (!ft_space(*str))
+		{	
 			str++;
+		}
 		while (*str && ft_space(*str))
 			res[row][col++] = *str++;
 		res[row][col] = '\0';
@@ -39,7 +41,9 @@ char	**ft_cmd_split(char *str)
 	char **res;
 
 	if (!str)
+	{
 		return (NULL);
+	}
 	if (!(res = ft_word_eject((char *)str)))
 		exit(2);
 	return (res);
@@ -53,7 +57,9 @@ int		ft_word_count(char *str)
 	while (*str)
 	{
 		while (!ft_space(*str))
+		{
 			str++;
+		}
 		if (*str)
 		{
 			res++;

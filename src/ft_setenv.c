@@ -21,7 +21,6 @@ int	ft_setenv(char **cmd, char ***env)
 {
 	int		index;
 
-	index = 0;
 	index = ft_get_env(*env, cmd[1], NULL);
 	if (cmd[2])
 	{
@@ -36,13 +35,14 @@ char **ft_setenv_value(char **cmd, int index, char **env)
 {
 	char	*tmp;
 	char	*str;
+	int		index_add;
 
 	tmp = NULL;
 	if (!(tmp = ft_strjoin(cmd[1], "=")))
 		exit(2);
 	if (!(str = ft_strjoin(tmp, cmd[2])))
 		exit(2);
-	if (env[index])
+	if (index != -1 && env[index])
 	{
 		free(env[index]);
 		if (!(env[index] = ft_strdup(str)))
@@ -50,10 +50,11 @@ char **ft_setenv_value(char **cmd, int index, char **env)
 	}
 	else
 	{
+		index_add = ft_envir_strcount(env);
 		env = ft_setenv_expand(env);
-		if (!(env[index] = ft_strdup(str)))
+		if (!(env[index_add] = ft_strdup(str)))
 			exit(2);
-		env[index + 1] = NULL;
+		env[index_add + 1] = NULL;
 	}
 	free(tmp);
 	free(str);
@@ -63,22 +64,23 @@ char **ft_setenv_value(char **cmd, int index, char **env)
 char	**ft_setenv_nonvalue(char **cmd, int index, char **env)
 {
 	char *tmp;
+	int	index_add;
 
 	if (!(tmp = ft_strjoin(cmd[1], "=")))
 		exit(2);
-	if (env[index])
+	if (index != -1 && env[index])
 	{
 		free(env[index]);
 		if (!(env[index] = ft_strdup(tmp)))
 			exit(2);
-		env[index + 1] = NULL;
 	}
 	else
 	{
+		index_add = ft_envir_strcount(env);
 		env = ft_setenv_expand(env);
-		if (!(env[index] = ft_strdup(tmp)))
+		if (!(env[index_add] = ft_strdup(tmp)))
 			exit(2);
-		env[index + 1] = NULL;
+		env[index_add + 1] = NULL;
 	}
 	free(tmp);
 	return (env);
@@ -91,16 +93,16 @@ char **ft_setenv_expand(char **env)
 	int		i;
 
 	i = 0;
-	size = ft_envir_strcount(env) + 1;
+	size = ft_envir_strcount(env) + 2;
 	if (!(res = ft_memalloc(sizeof(char *) * size)))
 		exit(2);
-	while ((env)[i])
+	while ((env)[i] && i < size)
 	{
 		if (!(res[i] = ft_strdup((env)[i])))
 			exit(2);
-		//free(env[i]);
+		free(env[i]);
 		i++;
 	}
-	//free(env);
+	free(env);
 	return (res);
 }

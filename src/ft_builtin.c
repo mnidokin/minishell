@@ -17,7 +17,7 @@ int	ft_builtin(char **cmd, char ***env)
 	else if (ft_strequ(cmd[0], "cd"))
 		return (ft_builtin_cd(cmd, env));
 	else if (ft_strequ(cmd[0], "pwd"))
-		return (ft_builtin_pwd(*env));
+		return (ft_builtin_pwd());
 	else if (ft_strequ(cmd[0], "echo"))
 		return (ft_builtin_echo(cmd, *env));
 	return (9);

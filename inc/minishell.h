@@ -9,34 +9,18 @@
 # include <unistd.h>
 # include "libft.h"
 
-/*
-** LINUX VERSION
-*/
-# include <sys/wait.h>
-
 # define PATH_LEN 4069
 
-typedef struct			s_envir
-{
-	char				*name;
-	char				*value;
-	struct s_envir		*next;
-}						t_envir;
-
 void					ft_prompt(void);
-void					ft_free(t_envir **envir);
 char					*ft_pwd(char *pwd);
-int						ft_builtin_pwd(char **env);
+int						ft_builtin_pwd(void);
 
 /*
 ** ft_envir.c
 */
-
-t_envir					*ft_envir_lst(char **src, char ***env);
-t_envir					*ft_envir_init(char *str);
+int	ft_free_mattr(char **mattr);
+int	ft_env_init(char **src, char ***env);
 int						ft_envir_strcount(char **str);
-void					ft_envir_lstaddback(t_envir **envir, t_envir *new);
-void					ft_envir_shllchange(t_envir *envir);
 
 void					ft_cmd_read(char **cmd);
 void					ft_str_addchr(char **str, char c, int len);
@@ -52,7 +36,7 @@ int						ft_builtin_env(char **env);
 ** ft_exe.c
 */
 
-int						ft_exe(char *str, t_envir *environ, char ***env);
+int						ft_exe(char *str, char ***env);
 int						ft_exe_cmd(char **cmd_prm, char ***env);
 int						ft_exe_cve(char *cmd, char **cm_pr, char **env);
 
@@ -90,7 +74,7 @@ int		ft_remove_var(int index, char ***env);
 int						ft_builtin_cd(char **cmd, char ***env);
 int 					ft_ch_dr(char *pth, char ***env);
 int						ft_set_pwd(char ***env, char *env_name, char *pth);
-char 					*ft_cd_homereplace(char *cmd, char **env);
+char 					*ft_cd_homereplace(char *cmd, char *home_path);
 
 int ft_builtin_echo(char **cmd, char **env);
 int ft_echo(int iter, char **cmd, char **env);
