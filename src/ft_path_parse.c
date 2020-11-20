@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:57:16 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 13:02:41 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/20 15:18:00 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,7 @@ int		ft_get_env(char **env, char *str, char **res)
 			if (!(tmp = ft_strsplit(env[i], '=')))
 				exit(2);
 			if (res)
-			{
-				if (tmp[1])
-					(*res) = ft_strdup(tmp[1]);
-				else
-					(*res) = ft_strdup("(null)");
-				
-			}
+				(*res) = ft_env_strdup(tmp[1]);
 			ft_free_mattr(tmp);
 			free(key);
 			return (i);
@@ -74,4 +68,22 @@ int		ft_get_env(char **env, char *str, char **res)
 		i++;
 	}
 	return (-1);
+}
+
+char	*ft_env_strdup(char *tmp)
+{
+	char	*res;
+
+	res = NULL;
+	if (tmp)
+	{
+		if (!(res = ft_strdup(tmp)))
+			exit(2);
+	}
+	else
+	{
+		if (!(res = ft_strdup("(null)")))
+			exit(2);
+	}
+	return (res);
 }

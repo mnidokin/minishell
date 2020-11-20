@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 22:56:49 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/20 15:01:46 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ void	ft_str_addchr(char **str, char c, int len)
 {
 	char *tmp;
 
-	tmp = ft_strdup(*str);
+	if (!(tmp = ft_strdup(*str)))
+		exit(2);
 	ft_strdel(&(*str));
-	*str = ft_strnew(len + 1);
+	if (!(*str = ft_strnew(len + 1)))
+		exit(2);
 	ft_strncpy((*str), tmp, len);
 	ft_strdel(&tmp);
 	(*str)[len] = c;

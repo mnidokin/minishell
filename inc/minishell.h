@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 23:53:35 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/20 15:16:50 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ int						ft_cd_tilda(char ***env, char **cmd);
 int						ft_cd_home(char ***env);
 char					*ft_exe_path_try(char *path, char *cmd_prm);
 int						ft_exe_notbuiltin(char ***env, char **cmd_prm, int res);
+char					*ft_exe_pathjoin(char *path, char *cmd_prm);
+char					*ft_env_strdup(char *tmp);
 
 #endif

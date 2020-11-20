@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:39 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 23:51:16 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/11/20 15:12:04 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	*ft_cd_homereplace(char *cmd, char *home_path)
 {
 	char *res;
 
-	res = ft_strjoin(home_path, &cmd[1]);
+	if (!(res = ft_strjoin(home_path, &cmd[1])))
+		exit(2);
 	return (res);
 }
