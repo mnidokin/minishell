@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/11 12:51:20 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/11 23:18:23 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		ft_exe(char *str, char ***env)
 
 	res = 0;
 	i = 0;
-	if (!(cmd_prm = ft_cmd_split(str))) //! Изменить для штатной обработки 
-		exit(2);						//! "||" и различных перенаправлений
+	if (!(cmd_prm = ft_cmd_split(str)))
+		exit(2);
 	res = ft_exe_cmd(cmd_prm, env);
 	if (res == -1)
 	{
@@ -80,15 +80,22 @@ int		ft_exe_notbuiltin(char ***env, char **cmd_prm, int res)
 	return (res);
 }
 
-int		ft_exe_cve(char *cmd, char **cm_pr, char **env)
+int		ft_exe_cve(char *cmd, char **cm_pr, char **env) //* Возможно стоит отдельно вынести функцию выполнения команды
 {
 	pid_t	pid;
 
 	if ((pid = fork()) == 0)
 	{
-		if (access(cmd, 0) == 0)
-			if (access(cmd, 1) == 0)
-				execve(cmd, cm_pr, env);
+		if (/*Проерка на конвеер*/)
+		{
+			//* Обработка конвеера
+		}
+		else //* Обработка команды
+		{
+			if (access(cmd, 0) == 0)
+				if (access(cmd, 1) == 0)
+					execve(cmd, cm_pr, env);
+		}
 	}
 	else if (pid < 0)
 		return (-1);
