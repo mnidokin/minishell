@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:19 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 15:40:02 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/11 21:23:47 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_remove_var(int index, char ***env)
 		str_count++;
 	}
 	str_count -= 1;
-	(*env) = ft_env_realloc(str_count, env);
+	(*env) = ft_env_resize(str_count, env);
 	return (0);
 }
 

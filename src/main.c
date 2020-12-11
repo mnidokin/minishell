@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 00:05:21 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/11 21:21:18 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av, char *envp[])
 {
 	char	**env;
 	char	*str;
+	char	**multiple_input;
 	int		brake_point;
 
 	(void)av;
@@ -32,7 +33,8 @@ int	main(int ac, char **av, char *envp[])
 			ft_putstr("");
 			continue ;
 		}
-		if ((brake_point = ft_exe(str, &env)) == -1)
+		multiple_input = ft_input_parse(str);
+		if (ft_multiple_input(multiple_input, &env) == -1)
 			break ;
 		free(str);
 	}
