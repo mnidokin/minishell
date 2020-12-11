@@ -25,6 +25,7 @@ SRC =	main.c \
 		ft_free.c \
 		ft_cd_aux.c \
 		ft_exe_aux.c \
+		ft_input_parse.c \
 		ft_cmd.c
 
 BUILD_DIR = ./build/

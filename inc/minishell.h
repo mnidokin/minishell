@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/20 15:40:01 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/11 12:49:04 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,12 @@ int						ft_exe_cve(char *cmd, char **cm_pr, char **env);
 */
 
 int						ft_free_mattr(char **mattr);
+
+/*
+** ft_input_parse.c
+*/
+
+int						ft_input_parse(int ac, char **av);
 
 /*
 ** ft_path_parse.c
