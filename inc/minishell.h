@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/11 21:17:49 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/16 20:14:07 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
+# ifndef FT_TYPES_H
+#  include "ft_types.h"
+# endif
+# ifndef FT_STRING_H
+#  include "ft_string.h"
+# endif
+# ifndef FT_ERROR_H
+#  include "ft_error.h"
+# endif
+# ifndef FT_ENV_H
+#  include "ft_env.h"
+# endif
+# ifndef FT_TERM_H
+#  include "ft_term.h"
+# endif
 
 /*
 ** ft_builtin.c

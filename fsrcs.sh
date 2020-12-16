@@ -1,9 +1,9 @@
 #! /bin/sh
 find src -type f -name \*.c > fsrcs
-echo "libft/libft.h" > fhdr
+echo "libft/includes/libft.h" > fhdr
 find inc -type f -name \*.h >> fhdr
 find src -type d > fdirs
-echo "libft" > fhdir
+echo "libft/includes" > fhdir
 find inc -type d >> fhdir
 # sed -i -e 's/srcs/obj/g' fdirs
 # rm fdirs-e 2>&-

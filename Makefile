@@ -6,7 +6,7 @@
 #    By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 15:27:16 by tvanessa          #+#    #+#              #
-#    Updated: 2020/12/16 18:04:56 by tvanessa         ###   ########.fr        #
+#    Updated: 2020/12/16 20:03:44 by tvanessa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ ifeq ($(debug), 1)
 CFLAGS := $(GCF)
 endif
 # CFLAGS += -I . -I $(LIBFT)/include -I include/
-CFLAGS += $(addprefix -I, $(LIBFT))
+# CFLAGS += $(addprefix -I, $(LIBFT))
 CFLAGS += $(addprefix -I, $(shell cat $(FHD)))
 CFS := -L $(LIBFT)/ -lft -ltermcap
 
@@ -64,7 +64,7 @@ $(OBJS):%.o:%.c $(CHEADERS)
 	@echo "\033[34m\033[1mCompilation of \033[0m\033[36m$(notdir $<)\033[1m\033[34m done.\033[0m"
 
 $(LIBFT):
-	@echo "\033[34m\033[1mCompilation of \033[0m\033[36mLibft\033[1m"
+	@echo "\033[34m\033[1mCompilation of \033[0m\033[36mLibft: \033[1m\c"
 	@make -C $(LIBFT) debug=$(debug)
 	@echo "\033[34m done.\033[0m"
 
