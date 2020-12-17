@@ -42,7 +42,7 @@
 		{
 			"type": "shell",
 			"label": "fsrcs",
-			"command": "${workspaceFolder}/.mozz/fsrcs.sh",
+			"command": "${workspaceFolder}/fsrcs.sh",
 			"args": [],
 			"options": {
 				"cwd": "${workspaceFolder}"

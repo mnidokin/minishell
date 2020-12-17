@@ -6,13 +6,13 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:51:15 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/14 16:46:41 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/17 05:14:11 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_term.h"
 
-void	ft_cursor_pos(t_ttyfd *fd, t_us *coords)
+void	ft_cursor_pos(t_ttyfd *fd, t_us coords[2])
 {
 	char	buf[10];
 	t_uc	i;

@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_get_promt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 22:57:20 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 05:06:44 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/17 05:07:08 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/17 05:07:24 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_term.h"
 
-void	ft_prompt(void)
+char 	*ft_get_promt(void)
 {
-	ft_putstr(ft_get_promt());
+	char *res;
+
+	res = "$> ";
+	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/11 21:21:18 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/17 04:50:07 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int	main(int ac, char **av, char *envp[])
 		multiple_input = ft_input_parse(str);
 		if (ft_multiple_input(multiple_input, &env) == -1)
 			break ;
-		free(str);
+		ft_strdel(&str);
 	}
-	free(str);
+	ft_strdel(&str);
+	// free(str);
 	ft_free_mattr(env);
 	return (0);
 }

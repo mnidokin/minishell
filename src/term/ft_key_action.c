@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:06:14 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/14 19:23:28 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/17 06:06:20 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ t_uc	ft_key_action(char *key, char *line)
 	if ((ft_strequ(key, SLCT_BSP)) || ft_strequ(key, SLCT_DEL))
 	{
 		if ((ft_strequ(key, SLCT_BSP)))
-			ft_term_send_command("le");
+			ft_cursor_left();
 		ft_eraese_char(&(g_term.fd), line);
+		return (1);
 	}
 	return (0);
 }

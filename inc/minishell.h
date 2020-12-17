@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/16 20:14:07 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/17 06:20:53 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int						ft_word_len(char *str);
 */
 
 void					ft_cmd_read(char **cmd);
-void					ft_str_addchr(char **str, char c, int len);
+void					ft_str_addchr(char **str, char c, int len, t_us pos);
 
 /*
 ** ft_echo.c

@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/14 19:24:46 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/17 05:27:49 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 */
 # define SLCT_CSI 91
 /*
-** Get current cursor position in "\e[r;cR" format
+** Get current cursor position in "\\e[r;cR" format
 */
 # define SLCT_GCCP "\e[6n"
 
@@ -96,6 +96,7 @@ typedef	struct		s_screen
 {
 	struct winsize	*ws;
 	t_us			home[2];
+	t_us			cursor_pos[2];
 	t_tios			tty_old;
 	t_tios			tty_new;
 }					t_screen;
@@ -132,6 +133,7 @@ typedef	struct	s_term
 {
 	t_ttyfd		fd;
 	t_screen	screen;
+	size_t		cmd_len;
 }				t_term;
 
 t_term	g_term;
@@ -287,5 +289,17 @@ t_uc	ft_key_action(char *key, char *buf);
 **
 */
 void	ft_arrow_key_action(t_uc dirrection);
+/*
+**
+*/
+int				read_term(char **line);
+/*
+**
+*/
+char				 	*ft_get_promt(void);
+void	ft_cursor_left(void);
+void	ft_cursor_right(void);
+void	ft_history_up(void);
+void	ft_history_down(void);
 
 #endif

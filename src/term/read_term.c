@@ -6,11 +6,11 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:26:09 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/14 19:38:33 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/16 20:43:53 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_term.h"
 
 static ssize_t	ft_get_line(char **line)
 {

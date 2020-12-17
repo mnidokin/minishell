@@ -41,6 +41,7 @@ src/term/ft_cursor_move_to.c
 src/term/ft_cursor_pos.c
 src/term/ft_eraese_char.c
 src/term/ft_erase.c
+src/term/ft_get_promt.c
 src/term/ft_is_arrow_key.c
 src/term/ft_is_spec_key.c
 src/term/ft_key_action.c

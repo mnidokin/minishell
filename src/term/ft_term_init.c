@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:57:55 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/14 18:48:53 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/17 05:14:49 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static t_uc	ft_getscreen(t_screen *screen, t_ttyfd *fd)
 			return (ft_perror(8, "Get screen"));
 	if ((ioctl(fd->out, TIOCGWINSZ, screen->ws)) < 0)
 		return (ft_perror(9, "Get screen"));
-	ft_cursor_pos(fd, &screen->home[0]);
+	ft_cursor_pos(fd, screen->home);
+	ft_cursor_pos(fd, screen->cursor_pos);
 	return (0);
 }
 
