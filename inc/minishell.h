@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/11 21:17:49 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/17 15:51:21 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,32 @@ char					**ft_setenv_expand(char **env);
 int						ft_builtin_unsetenv(char **cmd, char ***env);
 char					**ft_env_resize(int size, char ***env);
 int						ft_remove_var(int index, char ***env);
+
+/*
+** ft_pipe.c
+*/
+
+int spawn_proc (int in, int out, char *cmd, char **env);
+int fork_pipes (char *cmd, char **env);
+int	ft_pipe_arg_num(char **pipe_ar);
+/*
+int	ft_pipe(char *cmd_line, char ***env);
+int	ft_pipe_subproc_gen(char **pipe_ar, char ***env);
+int	ft_pipe_exe(char *cmd, char ***env, int fd_in, int fd_out);
+*/
+
+/*
+** ft_pipe_check.c
+*/
+
+int	ft_pipe_check(char *cmd_line);
+
+/*
+int	ft_process_pipes(char *line, char **envp);
+void	ft_execute_child_proc(int in[], int out, char **cmd, char **envp);
+int		fork_pipes(char **cmd, char **envp);
+int		ft_contains(char *str, char c);
+int		ft_array_len(char **arr);
+*/
 
 #endif

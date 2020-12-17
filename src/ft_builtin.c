@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:32 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/11/19 23:50:59 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/17 15:39:32 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	ft_builtin(char **cmd, char ***env)
 {
 	if (ft_strequ(cmd[0], "exit"))
+	{
 		return (-1);
+	}
 	else if (ft_strequ(cmd[0], "setenv"))
 		return (ft_builtin_setenv(cmd, env));
 	else if (ft_strequ(cmd[0], "unsetenv"))
@@ -28,7 +30,7 @@ int	ft_builtin(char **cmd, char ***env)
 		return (ft_builtin_pwd());
 	else if (ft_strequ(cmd[0], "echo"))
 		return (ft_builtin_echo(cmd, *env));
-	return (9);
+	return (2);
 }
 
 int	ft_builtin_env(char **env)
