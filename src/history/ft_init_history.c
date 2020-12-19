@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:10:53 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 07:05:15 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 22:42:08 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 static t_uc	fill_data_from_file(t_history *hist)
 {
-	char	line[PATH_MAX];
+	char	*line;
 	t_uc	err;
 
-	ft_bzero(line, PATH_MAX);
 	hist->len = 0;
 	err = SUCCESS;
-	while (get_next_line(hist->fd, (char**)(&line)) > 0)
+	if (!(hist->current = ft_dlst_new(NULL, 0)))
+		return (E_HIST_MALLOC);
+	while (get_next_line(hist->fd, &line) > 0)
 	{
 		if ((err = hist->add(line)) != SUCCESS)
 			return (err);
-		ft_bzero(line, PATH_MAX);
+		ft_strdel(&line);
 	}
 	return (E_HIST_SUCCESS);
 }
@@ -32,15 +33,19 @@ static t_uc	fill_data_from_file(t_history *hist)
 static t_uc	ft_history_add_data(char *data)
 {
 	t_history	*this;
+	t_uc		err;
 
 	this = ft_history(NULL);
-	if (!(this->data = ft_dlst_append(this->data, (void*)data, ft_strlen(data) + 1)))
+	if (!(this->current = ft_dlst_append(this->current, NULL, 0)))
 		return (E_HIST_MALLOC);
-	if (this->len >= HIST_MAXLEN)
-		ft_dlst_del_first(this->data);
+	if ((err = ft_dlst_set_content(this->current->prev, (void*)data,
+									ft_strlen(data) + 1)) != E_DLST_SUCCESS)
+		return (err);
+	if (this->len > HIST_MAXLEN)
+		ft_dlst_del_first(this->current);
 	else
 		++this->len;
-	return (E_DLST_SUCCESS);
+	return (E_HIST_SUCCESS);
 }
 
 static char	*ft_history_get_data(t_uc dirrection)
@@ -51,11 +56,11 @@ static char	*ft_history_get_data(t_uc dirrection)
 	this = ft_history(NULL);
 	res = NULL;
 	if (dirrection == HIST_UP)
-		if (this->data->prev && (res = (char*)(this->data->prev->content)))
-			this->data = this->data->prev;
+		if (this->current->prev && (res = (char*)(this->current->prev->content)))
+			this->current = this->current->prev;
 	if (dirrection == HIST_DOWN)
-		if (this->data->next && (res = (char*)(this->data->next->content)))
-			this->data = this->data->prev;
+		if (this->current->next && (res = (char*)(this->current->next->content)))
+			this->current = this->current->prev;
 	return (res);
 }
 
@@ -76,7 +81,7 @@ t_uc	ft_init_history(void)
 	if (!(res = (t_history*)malloc(sizeof(t_history))))
 		return (E_HIST_MALLOC);
 	ft_history(&res);
-	res->data = NULL;
+	res->current = NULL;
 	res->destroy = ft_history_destroy_common;
 	res->add = ft_history_add_data;
 	res->get = ft_history_get_data;

@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 05:23:04 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 06:28:27 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 22:47:04 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_dlist	*ft_dlst_append(t_dlist *list, void *data, size_t size);
 t_uc	ft_dlst_clear(t_dlist *list);
 t_uc	ft_dlst_del_first(t_dlist *list);
 t_uc	ft_dlst_del(t_dlist *list);
+t_uc	ft_dlst_set_content(t_dlist *lst, void *data, size_t size);
 
 #endif

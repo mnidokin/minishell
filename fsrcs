@@ -3,6 +3,7 @@ src/dlst/ft_dlst_clear.c
 src/dlst/ft_dlst_del.c
 src/dlst/ft_dlst_del_first.c
 src/dlst/ft_dlst_new.c
+src/dlst/ft_dlst_set_content.c
 src/env/env.2.c
 src/env/env.c
 src/env/env_new_var.c

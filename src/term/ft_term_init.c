@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:57:55 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/17 05:14:49 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 00:19:48 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,19 @@ static t_uc	get_io(t_ttyfd *fd)
 
 static void	ft_set_term_vals(t_tios *ntty, t_tios *otty)
 {
-	*ntty = *otty;
+	// *ntty = *otty;
+	(void)otty;
 	ntty->c_lflag &= ~(ECHO | ICANON | ISIG | IEXTEN);
 	ntty->c_oflag &= ~(OPOST);
-	ntty->c_iflag &= ~(IXON | ICRNL);
+	ntty->c_iflag &= ~(IXON | IXOFF | ICRNL);
 	ntty->c_cc[VMIN] = 1;
 	ntty->c_cc[VTIME] = 0;
 }
 
 static t_uc	ft_prepare_tty(t_screen *scrn, t_ttyfd *fd, t_bl tty)
 {
+	// static t_uc 	init = 0;
+
 	if (!tty)
 	{
 		if (!(isatty(fd->out)))
@@ -66,9 +69,12 @@ static t_uc	ft_prepare_tty(t_screen *scrn, t_ttyfd *fd, t_bl tty)
 			return (ft_perror(7, "Term init"));
 		return (0);
 	}
-	if (tcgetattr(g_term.fd.in, &(scrn->tty_old)))
-		return ((ft_perror(6, "Term init")));
-	ft_set_term_vals(&(scrn->tty_new), &(scrn->tty_old));
+	// if (!init && ++init)
+	// {
+		if (tcgetattr(g_term.fd.out, &(scrn->tty_old)))
+			return ((ft_perror(6, "Term init")));
+		ft_set_term_vals(&(scrn->tty_new), &(scrn->tty_old));
+	// }
 	if (tcsetattr(g_term.fd.in, TCSANOW, &(scrn->tty_new)))
 		return ((ft_perror(7, "Term init")));
 	return (0);

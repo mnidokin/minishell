@@ -54,6 +54,19 @@
 		},
 		{
 			"type": "shell",
+			"label": "clear_history",
+			"command": "/bin/rm",
+			"args": [".sh_history"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "none",
+		},
+		{
+			"type": "shell",
 			"label": "Make",
 			"command": "/usr/bin/make",
 			"args": [
@@ -66,7 +79,10 @@
 				"$gcc"
 			],
 			"group": "build",
-			"dependsOn": ["fsrcs"]
+			"dependsOn": [
+				"fsrcs",
+				// "clear_history"
+			]
 		},
 		{
 			"type": "shell",

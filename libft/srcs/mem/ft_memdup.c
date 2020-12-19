@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_del.c                                      :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 05:56:14 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 22:50:45 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/19 18:57:53 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/19 19:35:06 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
+#include "libft.h"
 
-t_uc	ft_dlst_del(t_dlist *lst)
+void	*ft_memdup(void *mem, size_t size)
 {
-	if (lst)
-	{
-		if (lst->size)
-			ft_memclr(lst->content, lst->size);
-		lst->content = NULL;
-		lst->next = NULL;
-		lst->prev = NULL;
-		lst->size = 0;
-		free(lst);
-		lst = NULL;
-	}
-	return (E_DLST_SUCCESS);
+	char *res;
+
+	res = NULL;
+	if (!size || !(res = (char*)malloc(size)))
+		return (NULL);
+	while (size--)
+		res[size] = ((char*)(mem))[size];
+	return ((void*)res);
 }

@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:12:18 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 07:04:43 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 22:30:28 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 typedef struct 	s_sh_history
 {
 	t_us		fd;
-	t_dlist		*data;
+	t_dlist		*current;
 	t_us		len;
 
 	t_uc		(*add)(char*);

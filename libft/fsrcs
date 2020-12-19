@@ -1,6 +1,8 @@
 srcs/env/env.2.c
 srcs/env/env.c
 srcs/env/env_new_var.c
+srcs/mem/ft_memdup.c
+srcs/mem/ft_memclr.c
 srcs/ft_atoi.c
 srcs/ft_atoi_recursive.c
 srcs/ft_atol.c

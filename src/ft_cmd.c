@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/19 07:19:02 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 23:10:41 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ void	ft_cmd_read(char **cmd)
 		++g_term.screen.cursor_pos[1];
 		++g_term.cmd_len;
 	}
-	(ft_history(NULL))->add(*cmd);
-	ft_history_save();
+	if (*cmd)
+	{
+		(ft_history(NULL))->add(*cmd);
+		ft_history_save();
+	}
 	ft_bzero(c, 9);
 	ft_term_deinit(&g_term.fd, &g_term.screen);
 }

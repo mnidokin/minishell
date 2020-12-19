@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:26:09 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/10/03 08:35:55 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/19 21:05:43 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,15 @@ int				get_next_line(int fd, char **line)
 {
 	int				ret;
 	char			**tmp;
+	char			*tmp1;
 	static t_list	*flst;
 	t_list			*cfd;
 
+	tmp = NULL;
 	if (fd <= -1 || !line || !(cfd = ft_lstget(&flst, fd)))
 		return (-1);
-	tmp = (char**)&cfd->content;
+	tmp1 = (char*)cfd->content;
+	tmp = &tmp1;
 	ret = ft_get_line(fd, tmp);
 	cfd->content = *tmp;
 	if (ret <= 0 && (!*tmp || !**tmp))
@@ -120,11 +123,11 @@ int				get_next_line(int fd, char **line)
 		return (ret);
 	}
 	ret = ft_strcpy_m(line, cfd->content);
-	tmp = (char**)&cfd->content;
+	tmp1 = (char*)(cfd->content);
 	if ((*tmp)[ret] != '\0')
 	{
 		cfd->content = ft_strdup(&(*tmp)[ret + 1]);
-		ft_strdel(tmp);
+		ft_strdel(&(*tmp));
 	}
 	else
 		*tmp[0] = 0x0;

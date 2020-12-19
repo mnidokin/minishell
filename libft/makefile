@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 15:27:16 by tvanessa          #+#    #+#              #
-#    Updated: 2020/12/16 19:58:07 by tvanessa         ###   ########.fr        #
+#    Updated: 2020/12/19 19:32:47 by tvanessa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ $(OBJD):
 	$(shell mkdir $(OBJD))
 	$(shell mkdir $(OBJD)/env)
 	$(shell mkdir $(OBJD)/string)
+	$(shell mkdir $(OBJD)/mem)
 
 clean:
 	@make -C ft_printf/ libclean

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:25:07 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/10/04 20:16:03 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/19 22:56:07 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -688,5 +688,7 @@ t_ull			ft_pow(t_ull x, int p);
 */
 t_us			ft_count_digits(t_ull n);
 char			*ft_skip_char(char **str, char c);
+void			*ft_memdup(void *mem, size_t size);
+void			ft_memclr(void *mem, size_t size);
 
 #endif
