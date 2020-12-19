@@ -1,7 +1,9 @@
 libft/includes/libft.h
+inc/ft_dlst.h
 inc/ft_env.h
 inc/ft_error.h
 inc/ft_errs.h
+inc/ft_sh_history.h
 inc/ft_string.h
 inc/ft_term.h
 inc/ft_types.h

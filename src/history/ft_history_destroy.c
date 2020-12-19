@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errs.h                                          :+:      :+:    :+:   */
+/*   ft_history_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 16:09:48 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/18 21:14:36 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/19 05:10:51 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/19 06:44:59 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERRS_H
-# define FT_ERRS_H
-# define SLCT_ENOARGS 1
-# define SLCT_EITERM 2
-# define SLCT_EGTERM 3
-# define SLCT_ETCDB 4
-# define SLCT_ETERMTCDB 5
-# define SLCT_ENOTTY 6
-# define SLCT_EDITERM_GATR 7
-# define SLCT_EDITERM_SATR 8
+#include "ft_sh_history.h"
 
-#endif
+t_uc	ft_history_destroy(t_history **hist, t_uc err)
+{
+	(*hist)->add = NULL;
+	(*hist)->get = NULL;
+	(*hist)->destroy = NULL;
+	ft_dlst_clear((*hist)->data);
+	(*hist)->data = NULL;
+	if ((*hist)->fd > 2)
+		close((*hist)->fd);
+	(*hist)->fd = 0;
+	(*hist)->len = 0;
+	free(*hist);
+	*hist = NULL;
+	return (err);
+}

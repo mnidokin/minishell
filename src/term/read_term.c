@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:26:09 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/16 20:43:53 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 07:20:29 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static ssize_t	ft_get_line(char **line)
 	while ((ret = read(g_term.fd.in, buf, 8)) > 0)
 	{
 		tmp = *line;
-		if (ft_is_spec_key(buf) && ft_key_action(buf, *line))
+		if (ft_is_spec_key(buf) && ft_key_action(buf, line))
 		{
 			if (ft_strequ(buf, "\r"))
 			{

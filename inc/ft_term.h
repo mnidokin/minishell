@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/17 05:27:49 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 07:13:04 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # endif
 # ifndef FT_ENV_H
 #  include "ft_env.h"
+# endif
+# ifndef FT_SH_HISTORY_H
+#  include "ft_sh_history.h"
 # endif
 
 /*
@@ -284,11 +287,11 @@ t_uc	ft_is_spec_key(char *input);
 /*
 ** 
 */
-t_uc	ft_key_action(char *key, char *buf);
+t_uc	ft_key_action(char *key, char **buf);
 /*
 **
 */
-void	ft_arrow_key_action(t_uc dirrection);
+void	ft_arrow_key_action(t_uc dirrection, char **line);
 /*
 **
 */
@@ -299,7 +302,7 @@ int				read_term(char **line);
 char				 	*ft_get_promt(void);
 void	ft_cursor_left(void);
 void	ft_cursor_right(void);
-void	ft_history_up(void);
-void	ft_history_down(void);
+void	ft_history_up(char **line);
+void	ft_history_down(char **line);
 
 #endif

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errs.h                                          :+:      :+:    :+:   */
+/*   ft_dlst_del_first.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 16:09:48 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/18 21:14:36 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/19 05:22:39 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/19 06:07:28 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERRS_H
-# define FT_ERRS_H
-# define SLCT_ENOARGS 1
-# define SLCT_EITERM 2
-# define SLCT_EGTERM 3
-# define SLCT_ETCDB 4
-# define SLCT_ETERMTCDB 5
-# define SLCT_ENOTTY 6
-# define SLCT_EDITERM_GATR 7
-# define SLCT_EDITERM_SATR 8
+#include "ft_dlst.h"
 
-#endif
+t_uc	ft_dlst_del_first(t_dlist *lst)
+{
+	if (lst)
+	{
+		while (lst->prev)
+			lst = lst->prev;
+		lst = lst->next;
+		ft_dlst_del(lst->prev);
+		lst->prev = NULL;		
+	}
+	return (E_DLST_SUCCESS);
+}

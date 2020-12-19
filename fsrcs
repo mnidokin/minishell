@@ -1,3 +1,8 @@
+src/dlst/ft_dlst_append.c
+src/dlst/ft_dlst_clear.c
+src/dlst/ft_dlst_del.c
+src/dlst/ft_dlst_del_first.c
+src/dlst/ft_dlst_new.c
 src/env/env.2.c
 src/env/env.c
 src/env/env_new_var.c
@@ -21,6 +26,10 @@ src/ft_putnstr.c
 src/ft_pwd.c
 src/ft_setenv.c
 src/ft_unsetenv.c
+src/history/ft_history.c
+src/history/ft_history_destroy.c
+src/history/ft_history_save.c
+src/history/ft_init_history.c
 src/main.c
 src/string/first_word_spec.c
 src/string/ft_clear_spliter.c

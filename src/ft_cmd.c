@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 06:59:39 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/19 07:19:02 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	ft_cmd_read(char **cmd)
 		ft_bzero(c, 9);
 		if (!(read(g_term.fd.in, c, 8)))
 			break ;
-		if ((ft_is_spec_key((char*)c) && ft_key_action((char*)c, *cmd)) || c[0] == '\e')
+		if ((ft_is_spec_key((char*)c) && ft_key_action((char*)c, cmd)) || c[0] == '\e')
 		{
 			if (ft_strequ(c, "\r"))
 			{
 				if (g_term.cmd_len == 0)
 					*cmd = NULL;
-				else
-					ft_str_addchr(cmd, '\n', g_term.cmd_len, g_term.cmd_len);
+				// else
+				// 	ft_str_addchr(cmd, '\n', g_term.cmd_len, g_term.cmd_len);
 				break ;
 			}
 			continue;
@@ -55,6 +55,8 @@ void	ft_cmd_read(char **cmd)
 		++g_term.screen.cursor_pos[1];
 		++g_term.cmd_len;
 	}
+	(ft_history(NULL))->add(*cmd);
+	ft_history_save();
 	ft_bzero(c, 9);
 	ft_term_deinit(&g_term.fd, &g_term.screen);
 }

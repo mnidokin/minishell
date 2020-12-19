@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errs.h                                          :+:      :+:    :+:   */
+/*   ft_history.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 16:09:48 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/18 21:14:36 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/18 21:16:30 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/19 06:57:38 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERRS_H
-# define FT_ERRS_H
-# define SLCT_ENOARGS 1
-# define SLCT_EITERM 2
-# define SLCT_EGTERM 3
-# define SLCT_ETCDB 4
-# define SLCT_ETERMTCDB 5
-# define SLCT_ENOTTY 6
-# define SLCT_EDITERM_GATR 7
-# define SLCT_EDITERM_SATR 8
+#include "ft_sh_history.h"
 
-#endif
+t_history	*ft_history(t_history **initial_history)
+{
+	static	t_history *history = NULL;
+
+	if (initial_history)
+	{
+		if (*initial_history)
+			history = *initial_history;
+		else
+			*initial_history = history;
+	}
+	
+	return (history);
+}

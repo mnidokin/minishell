@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 04:50:07 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/18 20:09:13 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char **av, char *envp[])
 	brake_point = 0;
 	env = NULL;
 	ft_env_init(envp, &env);
+	ft_init_history();
 	while (1)
 	{
 		ft_prompt();
@@ -39,7 +40,6 @@ int	main(int ac, char **av, char *envp[])
 		ft_strdel(&str);
 	}
 	ft_strdel(&str);
-	// free(str);
 	ft_free_mattr(env);
 	return (0);
 }

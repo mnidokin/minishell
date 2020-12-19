@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errs.h                                          :+:      :+:    :+:   */
+/*   ft_dlst_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 16:09:48 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/18 21:14:36 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/19 05:56:09 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/19 06:01:03 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERRS_H
-# define FT_ERRS_H
-# define SLCT_ENOARGS 1
-# define SLCT_EITERM 2
-# define SLCT_EGTERM 3
-# define SLCT_ETCDB 4
-# define SLCT_ETERMTCDB 5
-# define SLCT_ENOTTY 6
-# define SLCT_EDITERM_GATR 7
-# define SLCT_EDITERM_SATR 8
+#include "ft_dlst.h"
 
-#endif
+t_dlist		*ft_dlst_new(void *data, size_t size)
+{
+	t_dlist	*lst;
+
+	if (!(lst = (t_dlist*)malloc(sizeof(t_dlist))))
+		return (NULL);
+	lst->content = data;
+	lst->size = data ? size : 0;
+	lst->next = NULL;
+	lst->prev = NULL;
+	return (lst);	
+}
