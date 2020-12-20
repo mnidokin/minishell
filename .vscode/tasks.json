@@ -81,7 +81,26 @@
 			"group": "build",
 			"dependsOn": [
 				"fsrcs",
-				// "clear_history"
+				"clear_history"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "reMake",
+			"command": "/usr/bin/make",
+			"args": [
+				"re"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"dependsOn": [
+				"fsrcs",
+				"clear_history"
 			]
 		},
 		{

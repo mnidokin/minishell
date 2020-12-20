@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arrow_key_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:49:04 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 23:09:32 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 18:51:41 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ void	ft_history_down(char **line)
 			return ;
 		hist->current = hist->current->next;
 	}
-	else
+	else if (hist->current->next)
+	{
 		*line = ft_strnew(1);
+		hist->current = hist->current->next;
+	}
 }
 
 void	ft_clear_line(char *line)

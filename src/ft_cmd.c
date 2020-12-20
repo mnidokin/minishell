@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/19 23:10:41 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 19:14:16 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_cmd_read(char **cmd)
 {
 	char	c[9];
 	char	err;
+	char	*res;
 
 	g_term.cmd_len = 0;
 	if ((err = ft_term_init(&g_term.fd, &g_term.screen)))
@@ -35,20 +36,13 @@ void	ft_cmd_read(char **cmd)
 			{
 				if (g_term.cmd_len == 0)
 					*cmd = NULL;
-				// else
-				// 	ft_str_addchr(cmd, '\n', g_term.cmd_len, g_term.cmd_len);
 				break ;
 			}
 			continue;
 		}
 		ft_str_addchr(cmd, c[0], g_term.cmd_len, g_term.screen.cursor_pos[1] - ft_strlen(ft_get_promt()) - 1);
 		if (g_term.cmd_len > g_term.screen.cursor_pos[1] - ft_strlen(ft_get_promt()) - 1)
-		{
 			ft_term_send_command("im");
-			// ft_term_send_command("ic");
-			// ft_term_send_command(" ");
-			// ft_term_send_command("ip");
-		}
 		ft_dprintf(g_term.fd.out, "%s", c);
 		if (g_term.cmd_len > g_term.screen.cursor_pos[1] - ft_strlen(ft_get_promt()) - 1)
 			ft_term_send_command("ie");
@@ -57,6 +51,9 @@ void	ft_cmd_read(char **cmd)
 	}
 	if (*cmd)
 	{
+		res = *cmd;
+		*cmd = ft_strtrim(res);
+		ft_strdel(&res);
 		(ft_history(NULL))->add(*cmd);
 		ft_history_save();
 	}
