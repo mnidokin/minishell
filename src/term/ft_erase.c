@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_erase.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 21:25:32 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/14 18:59:28 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 00:11:52 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ size_t	ft_erase(t_clist *lst, t_ttyfd *fd, t_screen *scrn)
 	if (lst)
 		return (lst->len);
 	else
-	return (0);
+		return (0);
 }

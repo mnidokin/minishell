@@ -50,28 +50,29 @@
 			"problemMatcher": [
 				"$gcc"
 			],
-			"group": "none",
+			"group": "none"
 		},
 		{
 			"type": "shell",
 			"label": "clear_history",
 			"command": "/bin/rm",
-			"args": ["-f", ".sh_history"],
+			"args": [
+				"-f",
+				".sh_history"
+			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
 			"problemMatcher": [
 				"$gcc"
 			],
-			"group": "none",
+			"group": "none"
 		},
 		{
 			"type": "shell",
 			"label": "Make",
 			"command": "/usr/bin/make",
-			"args": [
-
-			],
+			"args": [],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
@@ -106,14 +107,15 @@
 		{
 			"type": "shell",
 			"label": "norminette activ file",
-			"command": "/usr/bin/norminette",
+			"command": "/usr/local/bin/norminette",
 			"args": [
 				"${workspaceFolder}/${relativeFile}"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
-			"group": "build"
+			"group": "build",
+			"problemMatcher": []
 		}
 	]
 }

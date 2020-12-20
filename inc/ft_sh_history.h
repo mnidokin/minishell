@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sh_history.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:12:18 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 22:30:28 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:33:57 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 #  include "ft_dlst.h"
 # endif
 
-# define HIST_MAXLEN 100
+# define HIST_MAXLEN 10
 
-typedef struct 	s_sh_history
+typedef struct	s_sh_history
 {
 	t_us		fd;
 	t_dlist		*current;
@@ -37,8 +37,10 @@ typedef struct 	s_sh_history
 	char		*(*get)(t_uc);
 	t_uc		(*destroy)(void);
 }				t_sh_history;
+
 # ifndef t_history
-typedef t_sh_history t_history;
+
+typedef t_sh_history	t_history;
 # endif
 
 enum		e_hist_errs
@@ -65,10 +67,5 @@ t_uc		ft_init_history(void);
 t_history	*ft_history(t_history **history);
 t_uc		ft_history_save(void);
 t_uc		ft_history_destroy(t_history **history, t_uc err);
-// t_uc		ft_history_destroy_common(void);
-// t_uc		ft_history_add_data(char *data);
-// char		*ft_history_get_data(t_uc dirrection);
-// char		*ft_history_search_data(char *needle);
-
 
 #endif

@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_del_first.c                                :+:      :+:    :+:   */
+/*   ft_str_addchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 05:22:39 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 22:21:20 by mozzart          ###   ########.fr       */
+/*   Created: 2020/12/21 01:21:50 by mozzart           #+#    #+#             */
+/*   Updated: 2020/12/21 01:21:55 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
+#include "minishell.h"
 
-t_uc	ft_dlst_del_first(t_dlist *lst)
+void	ft_str_addchr(char **str, char c, int len, t_us pos)
 {
-	if (lst)
+	char *tmp;
+
+	if (*str && !(tmp = ft_strdup(*str)))
+		exit(2);
+	else if (!*str)
 	{
-		while (lst->prev)
-			lst = lst->prev;
-		lst = lst->next;
-		ft_dlst_del(lst->prev);
-		lst->prev = NULL;
+		*str = ft_strnew(1);
+		(*str)[0] = c;
+		return ;
 	}
-	return (E_DLST_SUCCESS);
+	ft_strdel(&(*str));
+	if (!(*str = ft_strnew(len + 1)))
+		exit(2);
+	ft_strncpy((*str), tmp, len);
+	ft_strdel(&tmp);
+	if (pos < len)
+		ft_memmove(*str + pos + 1, *str + pos, len);
+	(*str)[pos] = c;
 }

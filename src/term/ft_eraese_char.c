@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_eraese_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:56:49 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/17 06:04:44 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:05:46 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_term.h"
-
-// static void	clear_prev_char(t_ttyfd *fd, char *heystack)
-// {
-
-// 	ft_term_send_command("le");
-// 	ft_term_send_command("dm");
-// 	ft_term_send_command("dc");
-// 	ft_term_send_command("ed");
-// }
 
 void		ft_str_clear_char(char *str, t_us pos)
 {
@@ -42,8 +33,6 @@ void		ft_eraese_char(t_ttyfd *fd, char *buf)
 		ft_term_send_command("dm");
 		ft_term_send_command("dc");
 		ft_term_send_command("ed");
-		// clear_prev_char(fd, buf);
-		// ft_cursor_pos(fd, coords);
 		ft_str_clear_char(buf, cursor_col - 1);
 		--g_term.cmd_len;
 	}

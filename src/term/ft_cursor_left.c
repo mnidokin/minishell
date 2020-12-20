@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_del_first.c                                :+:      :+:    :+:   */
+/*   ft_cursor_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 05:22:39 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 22:21:20 by mozzart          ###   ########.fr       */
+/*   Created: 2020/12/21 00:18:45 by mozzart           #+#    #+#             */
+/*   Updated: 2020/12/21 00:18:47 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dlst.h"
+#include "ft_term.h"
 
-t_uc	ft_dlst_del_first(t_dlist *lst)
+void	ft_cursor_left(void)
 {
-	if (lst)
-	{
-		while (lst->prev)
-			lst = lst->prev;
-		lst = lst->next;
-		ft_dlst_del(lst->prev);
-		lst->prev = NULL;
-	}
-	return (E_DLST_SUCCESS);
+	if (g_term.screen.cursor_pos[1] - 1 <= ft_strlen(ft_get_promt()))
+		return ;
+	ft_term_send_command("le");
+	--g_term.screen.cursor_pos[1];
 }

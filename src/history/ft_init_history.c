@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:10:53 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 19:59:11 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/21 00:32:14 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_uc	ft_history_add_data(char *data)
 	if (!this->current->prev->content)
 		if ((err = ft_dlst_set_content(this->current->prev, (void*)data,
 									ft_strlen(data) + 1)) != E_DLST_SUCCESS)
-		return (err);
+			return (err);
 	if (this->len > HIST_MAXLEN)
 		ft_dlst_del_first(this->current);
 	else
@@ -51,17 +51,19 @@ static t_uc	ft_history_add_data(char *data)
 
 static char	*ft_history_get_data(t_uc dirrection)
 {
-	t_history 	*this;
+	t_history	*this;
 	char		*res;
 
 	this = ft_history(NULL);
 	res = NULL;
 	if (dirrection == HIST_UP)
-		if (this->current->prev && (res = (char*)(this->current->prev->content)))
-			this->current = this->current->prev;
+		if (this->current->prev)
+			if ((res = (char*)(this->current->prev->content)))
+				this->current = this->current->prev;
 	if (dirrection == HIST_DOWN)
-		if (this->current->next && (res = (char*)(this->current->next->content)))
-			this->current = this->current->prev;
+		if (this->current->next)
+			if ((res = (char*)(this->current->next->content)))
+				this->current = this->current->prev;
 	return (res);
 }
 
@@ -73,7 +75,7 @@ static t_uc	ft_history_destroy_common(void)
 	return (ft_history_destroy(&this, SUCCESS));
 }
 
-t_uc	ft_init_history(void)
+t_uc		ft_init_history(void)
 {
 	t_history	*res;
 	t_uc		err;

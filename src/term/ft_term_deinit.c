@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term_deinit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 01:16:37 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 00:19:16 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:06:20 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ t_uc	ft_term_deinit(t_ttyfd *fd, t_screen *scrn)
 {
 	if (tcsetattr(fd->out, TCSADRAIN, &(scrn->tty_old)))
 		return (ft_perror(8, "Term deinit"));
-	// ft_term_send_command("ve");
-	// ft_term_send_command("rc");
-	// ft_term_send_command("cd");
-	// ft_term_send_command("te");
 	if (scrn->ws)
 		free(scrn->ws);
 	scrn->ws = NULL;
@@ -38,6 +34,5 @@ t_uc	ft_term_deinit(t_ttyfd *fd, t_screen *scrn)
 		close(fd->out);
 		fd->out = STDOUT_FILENO;
 	}
-	// ft_term_send_command("rc");
 	return (0);
 }

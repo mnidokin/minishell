@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_types.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 16:53:08 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/19 05:54:37 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:30:44 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #  include <libc.h>
 # endif
 # define SUCCESS 0
+# define FAIL 1
 
 # ifdef _UINT8_T
 typedef uint8_t t_uc;

@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/20 20:32:09 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/20 22:26:29 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ int		ft_exe_notbuiltin(char ***env, char **cmd_prm, int res)
 
 int		ft_exe_cve(char *cmd, char **cm_pr, char **env)
 {
-	// pid_t	pid;
-
 	if ((g_pid = fork()) == 0)
 	{
 		if (access(cmd, 0) == 0)

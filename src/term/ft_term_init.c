@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:57:55 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/20 00:19:48 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:03:44 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static t_uc	get_io(t_ttyfd *fd)
 
 static void	ft_set_term_vals(t_tios *ntty, t_tios *otty)
 {
-	// *ntty = *otty;
 	(void)otty;
 	ntty->c_lflag &= ~(ECHO | ICANON | ISIG | IEXTEN);
 	ntty->c_oflag &= ~(OPOST);
@@ -56,8 +55,6 @@ static void	ft_set_term_vals(t_tios *ntty, t_tios *otty)
 
 static t_uc	ft_prepare_tty(t_screen *scrn, t_ttyfd *fd, t_bl tty)
 {
-	// static t_uc 	init = 0;
-
 	if (!tty)
 	{
 		if (!(isatty(fd->out)))
@@ -69,12 +66,9 @@ static t_uc	ft_prepare_tty(t_screen *scrn, t_ttyfd *fd, t_bl tty)
 			return (ft_perror(7, "Term init"));
 		return (0);
 	}
-	// if (!init && ++init)
-	// {
-		if (tcgetattr(g_term.fd.out, &(scrn->tty_old)))
-			return ((ft_perror(6, "Term init")));
-		ft_set_term_vals(&(scrn->tty_new), &(scrn->tty_old));
-	// }
+	if (tcgetattr(g_term.fd.out, &(scrn->tty_old)))
+		return ((ft_perror(6, "Term init")));
+	ft_set_term_vals(&(scrn->tty_new), &(scrn->tty_old));
 	if (tcsetattr(g_term.fd.in, TCSANOW, &(scrn->tty_new)))
 		return ((ft_perror(7, "Term init")));
 	return (0);
@@ -99,10 +93,7 @@ t_uc		ft_term_init(t_ttyfd *fd, t_screen *screen)
 	tty = ttyname(STDOUT_FILENO);
 	if ((ret = ft_prepare_tty(screen, fd, tty ? ft_true : ft_false)))
 		return (ret);
-	// ft_term_send_command("ti");
 	if ((ret = ft_getscreen(screen, fd)))
 		return (ret);
-	// ft_term_send_command("vi");
-	// ft_term_send_command("sc");
 	return (0);
 }

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_promt.c                                     :+:      :+:    :+:   */
+/*   ft_history_down.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 05:07:08 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 23:57:27 by mozzart          ###   ########.fr       */
+/*   Created: 2020/12/21 00:25:45 by mozzart           #+#    #+#             */
+/*   Updated: 2020/12/21 00:25:47 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_term.h"
 
-char	*ft_get_promt(void)
+void	ft_history_down(char **line)
 {
-	char *res;
+	t_history	*hist;
+	char		*hist_data;
 
-	res = "$> ";
-	return (res);
+	if (!(hist = ft_history(NULL)))
+		return ;
+	if (hist->current->next && hist->current->next->content)
+	{
+		hist_data = (char*)(hist->current->next->content);
+		if (!(*line = ft_strdup(hist_data)))
+			return ;
+		hist->current = hist->current->next;
+	}
+	else if (hist->current->next)
+	{
+		*line = NULL;
+		hist->current = hist->current->next;
+	}
 }
