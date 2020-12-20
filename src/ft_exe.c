@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/14 13:37:42 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:32:09 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,17 @@ int		ft_exe_notbuiltin(char ***env, char **cmd_prm, int res)
 
 int		ft_exe_cve(char *cmd, char **cm_pr, char **env)
 {
-	pid_t	pid;
+	// pid_t	pid;
 
-	if ((pid = fork()) == 0)
+	if ((g_pid = fork()) == 0)
 	{
 		if (access(cmd, 0) == 0)
 			if (access(cmd, 1) == 0)
 				execve(cmd, cm_pr, env);
 	}
-	else if (pid < 0)
+	else if (g_pid < 0)
 		return (-1);
-	wait(&pid);
+	wait(&g_pid);
+	g_pid = 0;
 	return (0);
 }

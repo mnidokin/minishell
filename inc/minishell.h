@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 06:20:53 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:35:28 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <sys/stat.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
+# ifndef LIBFT_H
+#  include "libft.h"
+# endif
 # ifndef FT_TYPES_H
 #  include "ft_types.h"
 # endif
@@ -35,6 +37,8 @@
 # ifndef FT_TERM_H
 #  include "ft_term.h"
 # endif
+
+int	g_pid;
 
 /*
 ** ft_builtin.c

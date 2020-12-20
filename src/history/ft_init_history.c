@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_history.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:10:53 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 22:42:08 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 19:59:11 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static t_uc	ft_history_add_data(char *data)
 	this = ft_history(NULL);
 	if (!(this->current = ft_dlst_append(this->current, NULL, 0)))
 		return (E_HIST_MALLOC);
-	if ((err = ft_dlst_set_content(this->current->prev, (void*)data,
+	if (!this->current->prev->content)
+		if ((err = ft_dlst_set_content(this->current->prev, (void*)data,
 									ft_strlen(data) + 1)) != E_DLST_SUCCESS)
 		return (err);
 	if (this->len > HIST_MAXLEN)

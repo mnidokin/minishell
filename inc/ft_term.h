@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/19 07:13:04 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 21:49:05 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,5 +304,6 @@ void	ft_cursor_left(void);
 void	ft_cursor_right(void);
 void	ft_history_up(char **line);
 void	ft_history_down(char **line);
+void	ft_clear_line(char *line);
 
 #endif

@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/18 20:09:13 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:35:45 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	sighandler(int sig)
+{
+	if (g_pid)
+		kill(g_pid, sig);
+}
+
+void	ft_siginit(void)
+{
+	t_uc i;
+
+	i = 0;
+	g_pid = 0;
+	while (i++ < SIGUSR2)
+		signal(i, sighandler);	
+}
 
 int	main(int ac, char **av, char *envp[])
 {
@@ -25,6 +41,7 @@ int	main(int ac, char **av, char *envp[])
 	env = NULL;
 	ft_env_init(envp, &env);
 	ft_init_history();
+	ft_siginit();
 	while (1)
 	{
 		ft_prompt();

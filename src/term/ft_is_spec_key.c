@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_spec_key.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:04:13 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/14 18:26:38 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:40:53 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_uc	ft_is_spec_key(char *input)
 		return (1);
 	if (ft_strequ(input, SLCT_BSP))
 		return (1);
-	if (ft_strequ_any(input, "\xa|\x4"))
+	if (ft_strequ_any(input, "\xa|\x4|\x3"))
 		return (1);
 	if (ft_strequ(input, "\r"))
 		return (1);

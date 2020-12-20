@@ -56,7 +56,7 @@
 			"type": "shell",
 			"label": "clear_history",
 			"command": "/bin/rm",
-			"args": [".sh_history"],
+			"args": ["-f", ".sh_history"],
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},

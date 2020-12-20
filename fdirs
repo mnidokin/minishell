@@ -1,7 +1,7 @@
 src
-src/dlst
+src/term
 src/env
-src/ft_error
 src/history
 src/string
-src/term
+src/ft_error
+src/dlst

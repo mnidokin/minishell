@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:49:04 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 18:51:41 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/20 20:15:40 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	ft_history_up(char **line)
 
 	if (!(hist = ft_history(NULL)))
 		return ;
+	if (*line && !hist->current->content)
+		ft_dlst_set_content(hist->current, (void*)(*line),
+							ft_strlen(*line) + 1);
 	if (hist->current->prev)
 	{
 		hist_data = (char*)(hist->current->prev->content);
@@ -64,7 +67,7 @@ void	ft_history_down(char **line)
 	}
 	else if (hist->current->next)
 	{
-		*line = ft_strnew(1);
+		*line = NULL;
 		hist->current = hist->current->next;
 	}
 }
@@ -82,7 +85,8 @@ void	ft_clear_line(char *line)
 
 void		ft_print_history_line(char *line)
 {
-	ft_dprintf(g_term.fd.out, "%s", line);
+	if (line)
+		ft_dprintf(g_term.fd.out, "%s", line);
 	g_term.cmd_len = ft_strlen(line);
 	g_term.screen.cursor_pos[1] += g_term.cmd_len;
 }
