@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 19:14:19 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/21 20:23:22 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_exe_cmd(char **cmd_prm, char ***env)
 	res = ft_exe_notbuiltin(env,cmd_prm, res);
 	if (res == 1)
 	{
-		ft_putstr("minishell: command not found: ");
+		ft_putstr("21sh: command not found: ");
 		ft_putendl(cmd_prm[0]);
 	}
 	return (res);

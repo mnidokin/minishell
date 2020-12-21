@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+         #
+#    By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 15:27:16 by tvanessa          #+#    #+#              #
-#    Updated: 2020/12/21 19:11:37 by mozzart          ###   ########.fr        #
+#    Updated: 2020/12/21 20:22:35 by mnidokin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,11 +56,11 @@ vpath %.h $(notdir $(CHEADERS))
 all: $(LIBFT) $(OBJD) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(addprefix $(OBJD)/, $(OBJS)) $(CFS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(addprefix $(OBJD)/, $(OBJS)) $(CFS)
 	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
 $(OBJS):%.o:%.c $(CHEADERS)
-	$(CC) $(CFLAGS) -c $< -o obj/$@
+	@$(CC) $(CFLAGS) -c $< -o obj/$@
 	@echo "\033[34m\033[1mCompilation of \033[0m\033[36m$(notdir $<)\033[1m\033[34m done.\033[0m"
 
 $(LIBFT):

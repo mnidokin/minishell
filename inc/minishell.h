@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 19:22:34 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/21 20:18:36 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ char					*ft_env_strdup(char *tmp);
 ** ft_promt.c
 */
 
-void					ft_prompt(char **env);
+void					ft_promt(char **env);
 
 /*
 ** ft_putnstr.c
