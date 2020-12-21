@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_input_parse.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/20 22:27:19 by mozzart           #+#    #+#             */
+/*   Updated: 2020/12/20 22:27:35 by mozzart          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	**ft_input_parse(char *input_str)
@@ -9,7 +21,7 @@ char	**ft_input_parse(char *input_str)
 	return (res);
 }
 
-int	ft_multiple_input(char **multiple_cmd, char ***env)
+int		ft_multiple_input(char **multiple_cmd, char ***env)
 {
 	int iter;
 	int	res;

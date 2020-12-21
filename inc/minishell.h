@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 17:11:42 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/21 19:12:22 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,27 @@
 # include <sys/stat.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
+# ifndef LIBFT_H
+#  include "libft.h"
+# endif
 # include "colors.h"
+# ifndef FT_TYPES_H
+#  include "ft_types.h"
+# endif
+# ifndef FT_STRING_H
+#  include "ft_string.h"
+# endif
+# ifndef FT_ERROR_H
+#  include "ft_error.h"
+# endif
+# ifndef FT_ENV_H
+#  include "ft_env.h"
+# endif
+# ifndef FT_TERM_H
+#  include "ft_term.h"
+# endif
+
+int	g_pid;
 
 /*
 ** ft_builtin.c
@@ -61,7 +80,7 @@ int						ft_word_len(char *str);
 */
 
 void					ft_cmd_read(char **cmd);
-void					ft_str_addchr(char **str, char c, int len);
+void					ft_str_addchr(char **str, char c, int len, t_us pos);
 
 /*
 ** ft_echo.c
