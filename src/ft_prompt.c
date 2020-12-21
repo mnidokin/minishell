@@ -6,13 +6,14 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:57:20 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 19:15:19 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/21 19:22:48 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_promt_get_pwd(char **env)
+void	ft_prompt(char **env)
 {
+	(void)env;
 	ft_putstr(ft_get_promt());
 }
