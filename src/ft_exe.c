@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/16 23:29:31 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:40:37 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ int		ft_exe_cmd(char **cmd_prm, char ***env)
 	res = 1;
 	if (!cmd_prm[0])
 		return (0);
-	if ((res = ft_builtin(cmd_prm, env)) == EXIT_SUCCESS)
-		return (EXIT_SUCCESS);
-	if (res == -1)
-		exit (-1);
-	if (res == 2)
-		res = ft_exe_notbuiltin(env,cmd_prm, res);
+	res = ft_exe_notbuiltin(env,cmd_prm, res);
 	if (res == 1)
 	{
 		ft_putstr("minishell: command not found: ");

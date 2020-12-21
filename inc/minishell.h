@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 15:51:21 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:11:42 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
+# include "colors.h"
 
 /*
 ** ft_builtin.c
@@ -122,7 +123,7 @@ char					*ft_env_strdup(char *tmp);
 ** ft_promt.c
 */
 
-void					ft_prompt(void);
+void					ft_prompt(char **env);
 
 /*
 ** ft_putnstr.c

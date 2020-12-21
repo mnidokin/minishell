@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/15 13:11:42 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:11:48 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av, char *envp[])
 	ft_env_init(envp, &env);
 	while (1)
 	{
-		ft_prompt();
+		ft_prompt(env);
 		ft_cmd_read(&str);
 		if (!str)
 		{
