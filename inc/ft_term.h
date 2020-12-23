@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 21:49:05 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/23 17:49:23 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define SLCT_DOWN_ARROW "\e[B"
 # define SLCT_RIGHT_ARROW "\e[C"
 # define SLCT_LEFT_ARROW "\e[D"
+# define SLCT_OPT_LEFT_ARROW "\eb"
+# define SLCT_OPT_RIGHT_ARROW "\ef"
+# define SLCT_SHIFT_OPT_RIGHT_ARROW "\ef"
 
 /*
 ** Full sequence is "\e[3~"

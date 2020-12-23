@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/20 20:35:28 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/23 16:32:28 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ char					*ft_env_strdup(char *tmp);
 ** ft_promt.c
 */
 
-void					ft_prompt(void);
+void					ft_promt(void);
 
 /*
 ** ft_putnstr.c

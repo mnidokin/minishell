@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 01:29:05 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/23 16:32:28 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			main(int ac, char **av, char *envp[])
 	env = init(envp);
 	while (1)
 	{
-		ft_prompt();
+		ft_promt();
 		ft_cmd_read(&str);
 		if (str)
 		{

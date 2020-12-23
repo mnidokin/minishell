@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:57:20 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/17 05:06:44 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/23 16:32:28 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_prompt(void)
+void	ft_promt(void)
 {
 	ft_putstr(ft_get_promt());
 }
