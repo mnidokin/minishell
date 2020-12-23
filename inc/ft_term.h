@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/23 17:49:23 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/23 19:14:42 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@
 /*
 ** Followed after ESC and SCI
 */
-# define SLCT_UP_ARROW "\e[A"
-# define SLCT_DOWN_ARROW "\e[B"
-# define SLCT_RIGHT_ARROW "\e[C"
-# define SLCT_LEFT_ARROW "\e[D"
-# define SLCT_OPT_LEFT_ARROW "\eb"
-# define SLCT_OPT_RIGHT_ARROW "\ef"
-# define SLCT_SHIFT_OPT_RIGHT_ARROW "\ef"
+# define SLCT_UP_ARROW				"\e[A"
+# define SLCT_DOWN_ARROW			"\e[B"
+# define SLCT_RIGHT_ARROW			"\e[C"
+# define SLCT_LEFT_ARROW			"\e[D"
+# define SLCT_OPT_LEFT_ARROW		"\eb"
+# define SLCT_OPT_RIGHT_ARROW		"\ef"
+# define SLCT_CTRL_CMD_RIGHT_ARROW	"^[[1;5C"
+# define SLCT_SHIFT_RIGHT_ARROW		"^[[1;2C"
+# define SLCT_CTRL_CMD_LEFT_ARROW	"^[[1;5D"
+# define SLCT_SHIFT_LEFT_ARROW		"^[[1;2D"
 
 /*
 ** Full sequence is "\e[3~"
@@ -73,16 +76,22 @@
 */
 # define SLCT_GCCP "\e[6n"
 
-# define SLCT_ORIGINE_VALUE 1
-# define CLST_PRNT_ALL 0
-# define CLST_PRNT_CURR 1
-# define CLST_PRNT_ACT 2
-# define CLST_PRNT_SLCT 3
-# define CLST_PRNT_SLCT_OL 4
-# define SLCT_PREV 0b0001
-# define SLCT_NEXT 0b0010
-# define SLCT_LEFT 0b0100
-# define SLCT_RIGHT 0b1000
+# define SLCT_ORIGINE_VALUE	1
+# define CLST_PRNT_ALL		0
+# define CLST_PRNT_CURR		1
+# define CLST_PRNT_ACT		2
+# define CLST_PRNT_SLCT		3
+# define CLST_PRNT_SLCT_OL	4
+# define SLCT_PREV			0b000001
+# define SLCT_NEXT			0b000010
+# define SLCT_LEFT			0b000100
+# define SLCT_RIGHT			0b001000
+# define SLCT_WORD			0b010000
+# define SLCT_WORD_LEFT		SLCT_WORD | SLCT_LEFT 
+# define SLCT_WORD_RIGHT	SLCT_WORD | SLCT_RIGHT
+# define SLCT_LINE			0b100000
+# define SLCT_LINE_START	SLCT_LINE | SLCT_LEFT
+# define SLCT_LINE_END		SLCT_LINE | SLCT_RIGHT
 // # define STDIN open("/dev/tty", (O_RDONLY))
 // # define STDOUT open("/dev/tty", (O_WRONLY | O_NDELAY))
 # ifndef t_tios
