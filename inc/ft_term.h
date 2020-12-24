@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/23 19:14:42 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/24 04:52:13 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@
 # define SLCT_LEFT_ARROW			"\e[D"
 # define SLCT_OPT_LEFT_ARROW		"\eb"
 # define SLCT_OPT_RIGHT_ARROW		"\ef"
-# define SLCT_CTRL_CMD_RIGHT_ARROW	"^[[1;5C"
-# define SLCT_SHIFT_RIGHT_ARROW		"^[[1;2C"
-# define SLCT_CTRL_CMD_LEFT_ARROW	"^[[1;5D"
-# define SLCT_SHIFT_LEFT_ARROW		"^[[1;2D"
+# define SLCT_CTRL_CMD_RIGHT_ARROW	"\x1b[1;5C"
+# define SLCT_SHIFT_RIGHT_ARROW		"\x1b[1;2C"
+# define SLCT_CTRL_CMD_LEFT_ARROW	"\x1b[1;5D"
+# define SLCT_SHIFT_LEFT_ARROW		"\x1b[1;2D"
 
 /*
 ** Full sequence is "\e[3~"
