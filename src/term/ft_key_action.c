@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:06:14 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/21 01:01:14 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 01:28:34 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ static t_uc	fire_eof_key(char *key, char **line)
 	if ((ft_strequ(key, "\x04")))
 	{
 		if (*line)
-			ft_strdel(line);
+			return (SUCCESS);
 		*line = ft_strdup("exit");
 		g_term.cmd_len = 4;
 		ft_bzero(key, 9);
 		key[0] = '\r';
+		fire_new_line_key("\r");
 		return (SUCCESS);
 	}
 	return (FAIL);

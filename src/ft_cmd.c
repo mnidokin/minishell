@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 01:26:46 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 01:23:16 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,37 @@ static void	enter_icanon(void)
 
 static t_uc	is_spec_key(char *c, char **cmd)
 {
-	if ((ft_is_spec_key((char*)c) && ft_key_action((char*)c, cmd))
-		|| c[0] == '\e')
+	static char sequence[9] = {0};
+	size_t		seq_len;
+	if (c[0] == '\e')
 	{
+		if (sequence[0])
+			ft_strclr(sequence);
+		else
+			ft_strcat(sequence, c);
+	}
+	else if ((!(seq_len = ft_strlen(sequence)) && c[0] < '!') ||
+			(seq_len && seq_len < 9) || ft_strequ(c, SLCT_BSP))
+		ft_strcat(sequence, c);
+			// ft_strcat(sequence, c);
+	if (ft_key_action(sequence, cmd) && ft_strcpy(c, sequence))
+	{
+		ft_strclr(sequence);
 		if (ft_strequ(c, "\r"))
 		{
 			if (g_term.cmd_len == 0)
+			{
+				if (*cmd)
+					ft_strdel(cmd);
 				*cmd = NULL;
-			return (2);
+			}
+			return (SH_EOCMD);
 		}
-		return (1);
+		return (SH_SPEC_KEY);
 	}
+	else if (ft_is_spec_key(sequence))
+		return (SH_SPEC_KEY);
+	ft_strclr(sequence);
 	return (0);
 }
 
@@ -80,9 +100,9 @@ void		ft_cmd_read(char **cmd)
 		ft_bzero(c, 9);
 		if (!(read(g_term.fd.in, c, 8)))
 			break ;
-		if ((err = is_spec_key((char*)c, cmd)) && err == 2)
+		if ((err = is_spec_key((char*)c, cmd)) && err == SH_EOCMD)
 			break ;
-		else if (err == 1)
+		else if (err == SH_SPEC_KEY)
 			continue;
 		ft_str_addchr(cmd, c[0], g_term.cmd_len, g_term.screen.cursor_pos[1]
 						- ft_strlen(ft_get_promt()) - 1);

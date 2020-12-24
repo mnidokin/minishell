@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:27 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/23 16:32:28 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 01:26:40 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int			main(int ac, char **av, char *envp[])
 				break ;
 			ft_strdel(&str);
 		}
-		else
-			ft_putstr("");
+		// else
+		// 	ft_putstr("");
 	}
 	ft_strdel(&str);
 	ft_free_mattr(env);

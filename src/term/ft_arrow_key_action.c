@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arrow_key_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:49:04 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/24 04:55:18 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/24 20:55:37 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,4 @@ void		ft_arrow_key_action(t_uc dirrection, char **line)
 	}
 	if (dirrection & (SLCT_RIGHT | SLCT_LEFT) )
 		move_cursor(dirrection, line);
-		// ft_cursor_right();
-	// if (dirrection == SLCT_LEFT)
-	// 	ft_cursor_left();
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/24 04:52:13 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/25 00:34:30 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@
 # define SLCT_SHIFT_RIGHT_ARROW		"\x1b[1;2C"
 # define SLCT_CTRL_CMD_LEFT_ARROW	"\x1b[1;5D"
 # define SLCT_SHIFT_LEFT_ARROW		"\x1b[1;2D"
+# define SLCT_CTRL_UU				"\x15" 			// kill-whole-line
+# define SLCT_CTRL_UK				"\v" 			// kill-line
+# define SLCT_CTRL_UY				"\x19" 			// yank
+# define SLCT_CTRL_UW				"\x17" 			// backward-kill-word
+# define SLCT_CTRL_GROUND			"\e\x1f" 			// copy-prev-word
+# define SLCT_CTRL_UD				"\eD"			// kill-word
+
+# define SH_EOCMD					1
+# define SH_SPEC_KEY				2
+# define SH_WAIT_SEQ				3
 
 /*
 ** Full sequence is "\e[3~"
