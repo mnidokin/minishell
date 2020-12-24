@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 20:18:36 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/24 17:53:21 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,13 @@ int		fork_pipes(char **cmd, char **envp);
 int		ft_contains(char *str, char c);
 int		ft_array_len(char **arr);
 */
+
+int	ft_redirect(char **cmd_prm, char ***env, int in_fd);
+int	ft_search_char(char *str, char symbol);
+int	ft_search_redirect(char **cmd);
+int	ft_search_redirect_symbol(char **cmd);
+int	ft_redirect_openfile(char *name, int redirection);
+int	ft_redirect_isinput(char **cmd);
+int	ft_redirect_check(char *cmd_line);
 
 #endif
