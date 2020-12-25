@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:06:14 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/25 01:28:34 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 20:07:28 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,32 @@ static t_uc	fire_abort_code_key(char *key, char **line)
 	return (FAIL);
 }
 
+static t_uc	fire_del_keys(char *key, char **line)
+{
+	if ((ft_strequ(key, SLCT_BSP)) || ft_strequ(key, SLCT_DEL))
+	{
+		if ((ft_strequ(key, SLCT_BSP)))
+			ft_cursor_left();
+		ft_eraese_char(&(g_term.fd), *line);
+		return (SUCCESS);
+	}
+	return (FAIL);
+}
+
 t_uc		ft_key_action(char *key, char **line)
 {
 	if (fire_arrow_key(key, line) == SUCCESS)
 		return (1);
 	if ((fire_new_line_key(key)) == SUCCESS)
 		return (1);
-	if ((ft_strequ(key, SLCT_BSP)) || ft_strequ(key, SLCT_DEL))
-	{
-		if ((ft_strequ(key, SLCT_BSP)))
-			ft_cursor_left();
-		ft_eraese_char(&(g_term.fd), *line);
+	if (fire_del_keys(key, line) == SUCCESS)
 		return (1);
-	}
+	if (fire_copy_keys(key, line) == SUCCESS)
+		return (1);
+	if (fire_cut_keys(key, line) == SUCCESS)
+		return (1);
+	if (fire_paste_keys(key, line) == SUCCESS)
+		return (1);
 	if ((fire_abort_code_key(key, line)) == SUCCESS)
 		return (1);
 	if ((fire_eof_key(key, line)) == SUCCESS)

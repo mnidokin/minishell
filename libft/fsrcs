@@ -88,6 +88,7 @@ ft_printf/float.c
 ft_printf/free_struct_args.c
 ft_printf/free_struct_flugs.c
 ft_printf/ft_dprintf.c
+ft_printf/ft_vprintf.c
 ft_printf/ft_fundel.c
 ft_printf/ft_itoa_base.c
 ft_printf/ft_itoa_long.c
@@ -101,6 +102,7 @@ ft_printf/parse_flags_length.c
 ft_printf/parse_flags_point.c
 ft_printf/parse_flags_width.c
 ft_printf/parsing_str_format.c
+ft_printf/parsing_str_format_v.c
 ft_printf/parsing_str_format_fd.c
 ft_printf/revers_str.c
 ft_printf/struct_flugs.c

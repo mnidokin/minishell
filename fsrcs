@@ -18,6 +18,7 @@ src/term/ft_cursor_pos.c
 src/term/ft_term_init.c
 src/term/ft_eraese_char.c
 src/term/ft_history_up.c
+src/term/create_kseq_str.c
 src/term/ft_term_send_command.c
 src/term/ft_clear_line.c
 src/term/ft_get_promt.c

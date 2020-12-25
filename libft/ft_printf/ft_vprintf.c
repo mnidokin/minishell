@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_spec_key.c                                   :+:      :+:    :+:   */
+/*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 17:04:13 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/25 19:37:54 by mozzart          ###   ########.fr       */
+/*   Created: 2019/10/23 16:51:18 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/25 18:50:30 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_term.h"
+#include "ft_printf.h"
 
-t_uc	ft_is_spec_key(char *input)
+char		*ft_vprintf(const char *restrict format, ...)
 {
-	t_uc	input_len;
+	t_arg		*arg;
+	va_list		ap;
+	char		*i;
 
-	input_len = ft_strlen(input);
-	if (input_len == 1 && (input[0] < '\x20' || input[0] > '~'))
-			return (1);
-	if (input_len > 1 && input[0] == '\e')
+	i = 0;
+	arg = ft_newarg('q');
+	ft_bzero(arg->buff, SIZE);
+	if (format)
 	{
-		if (ft_strchr("bf[", input[1]) && is_arrow_key(input))
-			return (1);
-		if (ft_strequ_any(input, SLCT_KSEQ_STR))
-			return (1);
+		va_start(ap, format);
+		i = parsing_str_format_v(arg, ap, format);
+		va_end(ap);
 	}
-	return (0);
+	i = ft_strdup(i);
+	free(arg);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 16:53:10 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/05/18 21:29:37 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 17:48:39 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct				s_f_arg
 ** --------------------------- Main function -----------------------------------
 */
 int							ft_printf(const char *restrict format, ...);
+char						*ft_vprintf(const char *restrict format, ...);
 int							ft_dprintf(int fd,\
 const char *restrict format, ...);
 
@@ -121,6 +122,7 @@ int							parsing_str_format(t_arg *args, va_list ap,\
 const char *format);
 int							parsing_str_format_fd(t_arg *args, va_list ap,\
 const char *format, int fd);
+char						*parsing_str_format_v(t_arg *a, va_list ap, const char *f);
 
 /*
 ** --------------------------- Parsing flags -----------------------------------
@@ -232,5 +234,8 @@ t_us						*ft_arrcpy(t_us *dst, t_us *src, t_us len);
 t_us						ft_count_digits(t_ull n);
 t_us						*ft_arr_add_to(t_us *arr, t_ull v, t_us i);
 t_us						ft_vector_resize_r(t_v *v, size_t len);
+t_arg						*mod_in_helper(const char *format, t_arg *args, int i);
+t_arg						*write_char_no_mod(t_arg *args, char c);
+t_arg						*mod_in(const char *format, t_arg *args);
 
 #endif

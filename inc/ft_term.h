@@ -6,7 +6,7 @@
 /*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/25 00:34:30 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 20:01:00 by mozzart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,53 +34,67 @@
 # endif
 
 /*
-** Followed after ESC and SCI
+** Arrow keys
 */
-# define SLCT_UP_ARROW				"\e[A"
-# define SLCT_DOWN_ARROW			"\e[B"
-# define SLCT_RIGHT_ARROW			"\e[C"
-# define SLCT_LEFT_ARROW			"\e[D"
-# define SLCT_OPT_LEFT_ARROW		"\eb"
-# define SLCT_OPT_RIGHT_ARROW		"\ef"
-# define SLCT_CTRL_CMD_RIGHT_ARROW	"\x1b[1;5C"
-# define SLCT_SHIFT_RIGHT_ARROW		"\x1b[1;2C"
-# define SLCT_CTRL_CMD_LEFT_ARROW	"\x1b[1;5D"
-# define SLCT_SHIFT_LEFT_ARROW		"\x1b[1;2D"
-# define SLCT_CTRL_UU				"\x15" 			// kill-whole-line
-# define SLCT_CTRL_UK				"\v" 			// kill-line
-# define SLCT_CTRL_UY				"\x19" 			// yank
-# define SLCT_CTRL_UW				"\x17" 			// backward-kill-word
-# define SLCT_CTRL_GROUND			"\e\x1f" 			// copy-prev-word
-# define SLCT_CTRL_UD				"\eD"			// kill-word
+# define SLCT_UP_ARROW				"\e[A"			// History up
+# define SLCT_DOWN_ARROW			"\e[B"			// History down
+# define SLCT_RIGHT_ARROW			"\e[C"			// Cursor move right
+# define SLCT_OPT_RIGHT_ARROW		"\ef"			// Cursor move right by word
+# define SLCT_CTRL_CMD_RIGHT_ARROW	"\e[1;5C"
+# define SLCT_SHIFT_RIGHT_ARROW		"\e[1;2C"		// Move cursor to end of line
+# define SLCT_LEFT_ARROW			"\e[D"			// Cursor move left
+# define SLCT_OPT_LEFT_ARROW		"\eb"			// Cursor move left by word
+# define SLCT_CTRL_CMD_LEFT_ARROW	"\e[1;5D"
+# define SLCT_SHIFT_LEFT_ARROW		"\e[1;2D"		// Cursor move ot start of line
+
+/*
+** Copy special keys
+*/
+# define SLCT_CTRL_Y				"\x19" 			// yank line
+# define SLCT_CTRL_GROUND			"\e\x1f" 		// copy-prev-word
+# define SLCT_ESC_C					"\ec" 			// backword-copy-word
+# define SLCT_ESC_UC				"\eC" 			// forword-copy-word
+
+/*
+** Cut special keys
+*/
+# define SLCT_ESC_X					"\ex" 			// backword-cut-word
+# define SLCT_ESC_UX				"\eX" 			// forkword-cut-word
+# define SLCT_ESC_UXL				"\eXl" 			// cut-line
+
+
+/*
+** Delete special keys
+*/
+# define SLCT_CTRL_U				"\x15" 			// kill-whole-line
+# define SLCT_CTRL_K				"\v" 			// kill-line
+# define SLCT_CTRL_W				"\x17" 			// backward-kill-word
+# define SLCT_ESC_UD				"\eD"			// kill-line
+# define SLCT_ESC_D					"\ed"			// backword-kill-word
+# define SLCT_ESC_DF				"\efd"			// forword-kill-word
+
+/*
+** Other special keys
+*/
+# define SLCT_ENTER					"\n"			// New line
+# define SLCT_ESC					"\e"			// Special sequence introduser/exiter
+# define SLCT_HTAB					"\t"			// Autocomplition
+# define SLCT_ESC_V					"\ev"			// Paste from clipboard
+# define SLCT_BSP					"\x7f"			// Backword-delete-char
+# define SLCT_DEL					"\e[3~"			// Forword-delete-char
+
+# define SLCT_KSEQ_COUNT			10
+# define SLCT_KSEQ_STR				create_kseq_str()
+
 
 # define SH_EOCMD					1
 # define SH_SPEC_KEY				2
 # define SH_WAIT_SEQ				3
 
 /*
-** Full sequence is "\e[3~"
-*/
-
-# define SLCT_DEL "\e[3~"
-
-/*
-** Sufficient
-*/
-
-# define SLCT_ENTER "\n"
-# define SLCT_ESC "\e"
-# define SLCT_BSP "\x7f"
-
-/*
-** Tabs
-*/
-# define SLCT_HTAB "\x9"
-# define SLCT_VTAB "\xb"
-
-/*
 ** Control Siquence Itroducer or '[' char
 */
-# define SLCT_CSI 91
+# define SLCT_CSI '['
 /*
 ** Get current cursor position in "\\e[r;cR" format
 */
@@ -327,5 +341,6 @@ void	ft_cursor_right(void);
 void	ft_history_up(char **line);
 void	ft_history_down(char **line);
 void	ft_clear_line(char *line);
+char	*create_kseq_str(void);
 
 #endif
