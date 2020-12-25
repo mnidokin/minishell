@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_promt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 05:07:08 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/20 23:57:27 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/25 18:14:23 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ char	*ft_get_promt(void)
 {
 	char *res;
 
-	res = "$> ";
+	res = " > ";
 	return (res);
 }

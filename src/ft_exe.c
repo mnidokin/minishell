@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/21 20:23:22 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/26 00:22:09 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,11 @@ int		ft_exe_notbuiltin(char ***env, char **cmd_prm, int res)
 int		ft_exe_cve(char *cmd, char **cm_pr, char **env)
 {
 		if (access(cmd, 0) == 0)
+		{
 			if (access(cmd, 1) == 0)
+			{
 				execve(cmd, cm_pr, env);
+			}
+		}
 	return (0);
 }

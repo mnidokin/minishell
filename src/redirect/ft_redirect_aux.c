@@ -44,19 +44,28 @@ int	ft_search_redirect_symbol(char **cmd)
 	return (EXIT_FAILURE);
 }
 
-int	ft_redirect_openfile(char *name, int redirection)
+void	ft_redirect_openfile(char *file_name, int redirection)
 {
 	int	fd;
-	fd = 0;
 
-	if (redirection)
+	if (redirection == 1)
 	{
-		fd = open(name, O_CREAT | O_RDWR | O_TRUNC,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+		fd = open(file_name, O_CREAT | O_RDWR | O_APPEND,
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+		dup2(fd, 1);
+	}
+	else if (redirection == 2)
+	{
+		fd = open(file_name, O_RDONLY);
+		dup2(fd, 0);
+	}
+	else
+	{
+		fd = open(file_name, O_CREAT | O_RDWR | O_TRUNC,
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 		dup2(fd, 1);
 	}
 	close(fd);
-	return (EXIT_SUCCESS);
 }
 
 int	ft_redirect_isinput(char **cmd)

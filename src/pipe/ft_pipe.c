@@ -63,10 +63,9 @@ int	fork_pipes (char *cmd, char **env)
 	}
 	ft_putstr(COLOR_FLUSH); */
 	if (ft_search_redirect(cmd_prm) == EXIT_SUCCESS)
-		res = ft_redirect(cmd_prm, &env, in);
+		return (ft_redirect(cmd_prm, &env, in));
 	else
-		res = ft_exe_notbuiltin(&env, cmd_prm, res);
-	return (res);
+		return (ft_exe_notbuiltin(&env, cmd_prm, res));
 }
 
 int	ft_pipe_arg_num(char **pipe_ar)
