@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 22:20:08 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/09 21:53:32 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/26 05:36:35 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # ifndef FT_TYPES_H
 #  include "ft_types.h"
 # endif
+
+# define STR_SEARCH_LEFT 0b01
+# define STR_SEARCH_RIGHT 0b10
 
 /*
 ** *
@@ -99,6 +102,8 @@ char		*ft_stranychr(char *str, char *anyc);
 ** Separated by '|'
 */
 t_uc		ft_strequ_any(char *haystack, char *needle_set);
+char		ft_strcmp_any(char *haystack, char *needle_set);
+
 /*
 ** *
 */
@@ -123,5 +128,6 @@ int			validate_brakets(char *str, char *o);
 **	I.e. "[]{}()"""
 */
 char		*get_quoted_substring(char *str, char o, char c);
+char		*ft_get_word(char const *start, t_uc dirrectoin, char *current_pos);
 
 #endif

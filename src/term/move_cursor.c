@@ -6,17 +6,18 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 01:53:57 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/26 02:15:51 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/26 04:56:26 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_term.h"
 
-static void	move_by_word(t_uc dirrection, char **line)
+static void	move_through_line(t_uc dirrection, char **line)
 {
 	size_t	line_len;
 	t_us	coords[2];
 
+	(void)line;
 	line_len = ft_strlen(ft_get_promt()) + 1;
 	ft_cursor_pos(&(g_term.fd), &(coords[0]));
 	if (dirrection & SLCT_RIGHT)
@@ -27,7 +28,7 @@ static void	move_by_word(t_uc dirrection, char **line)
 	g_term.screen.cursor_pos[1] = line_len;
 }
 
-static void	move_through_line(t_uc dirrection, char **line)
+static void	move_by_word(t_uc dirrection, char **line)
 {
 	char	*cursor_ptr;
 	t_us	coords[2];
@@ -49,15 +50,15 @@ void		move_cursor(t_uc dirrection, char **line)
 	void	(*move)(void);
 	size_t	line_len;
 	t_us	coords[2];
-	char	*cursor_ptr;
+	// char	*cursor_ptr;
 
 	move = dirrection & SLCT_LEFT ? ft_cursor_left : ft_cursor_right;
 	line_len = ft_strlen(ft_get_promt()) + 1;
 	ft_cursor_pos(&(g_term.fd), &(coords[0]));
 	if (dirrection & SLCT_LINE)
-		move_by_word(dirrection, line);
-	else if (dirrection & SLCT_WORD)
 		move_through_line(dirrection, line);
+	else if (dirrection & SLCT_WORD)
+		move_by_word(dirrection, line);
 	else
 		move();
 }

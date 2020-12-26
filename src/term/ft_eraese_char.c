@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_eraese_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 15:56:49 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/25 01:31:15 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/26 04:21:58 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		ft_str_clear_char(char *str, t_us pos)
 	ft_memmove(str + pos, str + pos + 1, len);
 }
 
-void		ft_eraese_char(t_ttyfd *fd, char *buf)
+void		ft_erase_char(t_ttyfd *fd, char *buf)
 {
 	size_t	i;
 	t_us	cursor_col;

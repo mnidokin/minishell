@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_spec_key.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:04:13 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/25 19:37:54 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/26 05:30:45 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_uc	ft_is_spec_key(char *input)
 	{
 		if (ft_strchr("bf[", input[1]) && is_arrow_key(input))
 			return (1);
-		if (ft_strequ_any(input, SLCT_KSEQ_STR))
+		if (ft_strcmp_any(input, SLCT_KSEQ_STR))
 			return (1);
 	}
 	return (0);

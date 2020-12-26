@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_term.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/25 20:01:00 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/26 05:39:52 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,12 @@
 */
 # define SLCT_CTRL_U				"\x15" 			// kill-whole-line
 # define SLCT_CTRL_K				"\v" 			// kill-line
-# define SLCT_CTRL_W				"\x17" 			// backward-kill-word
 # define SLCT_ESC_UD				"\eD"			// kill-line
-# define SLCT_ESC_D					"\ed"			// backword-kill-word
-# define SLCT_ESC_DF				"\efd"			// forword-kill-word
+# define SLCT_CTRL_W				"\x17" 			// backward-kill-word
+# define SLCT_ESC_DB				"\edb"			// backword-kill-word
+# define SLCT_ESC_DF				"\edf"			// forword-kill-word
+# define SLCT_BSP					"\x7f"			// Backword-delete-char
+# define SLCT_DEL					"\e[3~"			// Forword-delete-char
 
 /*
 ** Other special keys
@@ -80,8 +82,6 @@
 # define SLCT_ESC					"\e"			// Special sequence introduser/exiter
 # define SLCT_HTAB					"\t"			// Autocomplition
 # define SLCT_ESC_V					"\ev"			// Paste from clipboard
-# define SLCT_BSP					"\x7f"			// Backword-delete-char
-# define SLCT_DEL					"\e[3~"			// Forword-delete-char
 
 # define SLCT_KSEQ_COUNT			10
 # define SLCT_KSEQ_STR				create_kseq_str()
@@ -106,10 +106,10 @@
 # define CLST_PRNT_ACT		2
 # define CLST_PRNT_SLCT		3
 # define CLST_PRNT_SLCT_OL	4
-# define SLCT_PREV			0b000001
-# define SLCT_NEXT			0b000010
-# define SLCT_LEFT			0b000100
-# define SLCT_RIGHT			0b001000
+# define SLCT_LEFT			0b000001
+# define SLCT_RIGHT			0b000010
+# define SLCT_PREV			0b000100
+# define SLCT_NEXT			0b001000
 # define SLCT_WORD			0b010000
 # define SLCT_WORD_LEFT		SLCT_WORD | SLCT_LEFT 
 # define SLCT_WORD_RIGHT	SLCT_WORD | SLCT_RIGHT
@@ -167,6 +167,15 @@ typedef struct		s_clist
 	void			(*erase)(struct s_citem*);
 	void			*(*destroy)(struct s_clist**);
 }					t_clist;
+
+typedef	struct	s_clip
+{
+	char		*line;
+
+	t_uc			(*set)(char*, char*);
+	char			*(*get)(void);
+	void			*(*destroy)(void);
+}				t_clip;
 
 typedef	struct	s_term
 {
@@ -263,7 +272,7 @@ void	search_mode(t_ttyfd *fd, t_clist *lst, t_screen *screen);
 /*
 ** 
 */
-void	ft_eraese_char(t_ttyfd *fd, char *buf);
+void	ft_erase_char(t_ttyfd *fd, char *buf);
 /*
 ** 
 */
@@ -342,5 +351,15 @@ void	ft_history_up(char **line);
 void	ft_history_down(char **line);
 void	ft_clear_line(char *line);
 char	*create_kseq_str(void);
+void	move_cursor(t_uc dirrection, char **line);
+t_uc	fire_arrow_key(char *key, char **line);
+t_uc	fire_new_line_key(char *key);
+t_uc	fire_eof_key(char *key, char **line);
+t_uc	fire_abort_code_key(char *key, char **line);
+t_uc	fire_del_keys(char *key, char **line);
+t_uc	fire_copy_keys(char *key, char **line);
+t_uc	fire_cut_keys(char *key, char **line);
+t_uc	fire_paste_keys(char *key, char **line);
+t_clip	*ft_clipboard(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_kseq_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 19:24:25 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/25 19:41:29 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/26 05:26:00 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*create_kseq_str(void)
 						SLCT_ESC_X,
 						SLCT_ESC_UX,
 						SLCT_ESC_UD,
-						SLCT_ESC_D,
+						SLCT_ESC_DB,
 						SLCT_ESC_DF,
 						SLCT_ESC_V,
 						SLCT_DEL);

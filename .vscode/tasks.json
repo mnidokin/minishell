@@ -107,7 +107,7 @@
 		{
 			"type": "shell",
 			"label": "norminette activ file",
-			"command": "/usr/local/bin/norminette",
+			"command": "/usr/bin/norminette",
 			"args": [
 				"${workspaceFolder}/${relativeFile}"
 			],
