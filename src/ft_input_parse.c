@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 22:27:19 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/25 00:53:39 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/27 15:29:46 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_multiple_input(char **multiple_cmd, char ***env)
 	{
 		if (!(cmd_prm = ft_cmd_split(multiple_cmd[iter])))
 				exit(2);
-		if ((res = ft_builtin(cmd_prm, env)) == EXIT_SUCCESS)
+		if (ft_search_redirect_symbol(cmd_prm) == EXIT_FAILURE && ((res = ft_builtin(cmd_prm, env)) == EXIT_SUCCESS))
 		{
 			return (EXIT_SUCCESS);
 		}

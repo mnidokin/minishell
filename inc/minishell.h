@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/25 19:12:40 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/27 14:47:57 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # ifndef FT_TERM_H
 #  include "ft_term.h"
 # endif
+
+# define REDIRECT_STD_OUTPUT 0
+# define REDIRECT_STD_INPUT 1
 
 int	g_pid;
 

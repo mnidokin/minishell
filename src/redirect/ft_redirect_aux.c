@@ -48,18 +48,18 @@ void	ft_redirect_openfile(char *file_name, int redirection)
 {
 	int	fd;
 
-	if (redirection == 1)
+	if (redirection == 100)
 	{
 		fd = open(file_name, O_CREAT | O_RDWR | O_APPEND,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 		dup2(fd, 1);
 	}
-	else if (redirection == 2)
+	else if (redirection == REDIRECT_STD_INPUT)
 	{
 		fd = open(file_name, O_RDONLY);
 		dup2(fd, 0);
 	}
-	else
+	if (redirection == REDIRECT_STD_OUTPUT)
 	{
 		fd = open(file_name, O_CREAT | O_RDWR | O_TRUNC,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);

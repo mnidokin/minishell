@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:05 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/26 00:22:09 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/27 15:28:37 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_exe(char *str, char ***env)
 	res = 0;
 	if (!(cmd_prm = ft_cmd_split(str)))
 		exit(2);
-	res = ft_exe_cmd(cmd_prm, env); // Не, сюда нужно обработку пайпов
+	res = ft_exe_cmd(cmd_prm, env);
 	if (res == -1)
 	{
 		ft_free_mattr(cmd_prm);
