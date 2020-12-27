@@ -48,7 +48,7 @@ void	ft_redirect_openfile(char *file_name, int redirection)
 {
 	int	fd;
 
-	if (redirection == 100)
+	if (redirection == REDIRECT_STD_OUTPUT_ADD)
 	{
 		fd = open(file_name, O_CREAT | O_RDWR | O_APPEND,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
@@ -66,6 +66,20 @@ void	ft_redirect_openfile(char *file_name, int redirection)
 		dup2(fd, 1);
 	}
 	close(fd);
+}
+
+int	ft_search_symbol(char **str_arr, char *symbol)
+{
+	int index;
+
+	index = 0;
+	while (str_arr[index])
+	{
+		if (ft_strequ(str_arr[index], symbol))
+			return (EXIT_SUCCESS);
+		index++;
+	}
+	return (EXIT_FAILURE);
 }
 
 int	ft_redirect_isinput(char **cmd)

@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/27 14:47:57 by mnidokin         ###   ########.fr       */
+/*   Updated: 2020/12/27 16:17:48 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@
 # endif
 
 # define REDIRECT_STD_OUTPUT 0
-# define REDIRECT_STD_INPUT 1
+# define REDIRECT_STD_OUTPUT_ADD 1
+# define REDIRECT_STD_INPUT 2
 
 int	g_pid;
 
@@ -213,5 +214,6 @@ int	ft_search_redirect_symbol(char **cmd);
 void	ft_redirect_openfile(char *name, int redirection);
 int	ft_redirect_isinput(char **cmd);
 int	ft_redirect_check(char *cmd_line);
+int	ft_search_symbol(char **str_arr, char *symbol);
 
 #endif
