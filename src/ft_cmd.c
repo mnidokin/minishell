@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/25 17:12:15 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/29 03:12:31 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static t_uc	is_spec_key(char *c, char **cmd)
 		else
 			ft_strcat(sequence, c);
 	}
-	else if ((!(seq_len = ft_strlen(sequence)) && c[0] < '!') ||
-			(seq_len && seq_len < 9) || ft_strequ(c, SLCT_BSP))
+	else if (((!(seq_len = ft_strlen(sequence)) && c[0] < ' ') ||
+			(seq_len && seq_len < 9) || ft_strequ(c, SLCT_BSP)) &&
+			(sequence[0] == '\e' || !sequence[0]))
 		ft_strcat(sequence, c);
 	if (ft_key_action(sequence, cmd) && ft_strcpy(c, sequence))
 	{
@@ -54,7 +55,11 @@ static t_uc	is_spec_key(char *c, char **cmd)
 		return (SH_SPEC_KEY);
 	}
 	else if (ft_is_spec_key(sequence))
+	{
+		if (sequence[0] != '\e' && sequence[0] < ' ')
+			ft_strclr(sequence);
 		return (SH_SPEC_KEY);
+	}
 	ft_strclr(sequence);
 	return (0);
 }

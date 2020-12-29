@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 02:23:50 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/26 05:46:20 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/29 02:38:55 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_uc	fire_del_keys(char *key, char **line)
 	{
 		if ((ft_strequ(key, SLCT_BSP)))
 			ft_cursor_left();
+		else if (g_term.cmd_len <= g_term.screen.cursor_pos[1] - ft_strlen(ft_get_promt()) - 1)
+			return (SUCCESS);
 		ft_erase_char(&(g_term.fd), *line);
 		return (SUCCESS);
 	}

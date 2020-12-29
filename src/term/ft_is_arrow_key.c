@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:31:40 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/24 03:20:28 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/29 02:24:53 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ t_uc		is_arrow_key(char *c)
 		return (SLCT_LEFT);
 	if (ft_strequ(c, SLCT_OPT_LEFT_ARROW))
 		return (SLCT_WORD_LEFT);
-	if (ft_strequ(c, SLCT_SHIFT_LEFT_ARROW))
+	if (ft_strequ(c, SLCT_SHIFT_LEFT_ARROW) ||
+		ft_strequ(c, SLCT_HOME))
 		return (SLCT_LINE_START);
 	if (ft_strequ(c, SLCT_RIGHT_ARROW))
 		return (SLCT_RIGHT);
 	if (ft_strequ(c, SLCT_OPT_RIGHT_ARROW))
 		return (SLCT_WORD_RIGHT);
-	if (ft_strequ(c, SLCT_SHIFT_RIGHT_ARROW))
+	if (ft_strequ(c, SLCT_SHIFT_RIGHT_ARROW) || 
+		ft_strequ(c, SLCT_END))
 		return (SLCT_LINE_END);
 	return (0);
 }

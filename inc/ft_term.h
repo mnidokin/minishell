@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/26 05:39:52 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/29 02:24:07 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@
 # define SLCT_OPT_RIGHT_ARROW		"\ef"			// Cursor move right by word
 # define SLCT_CTRL_CMD_RIGHT_ARROW	"\e[1;5C"
 # define SLCT_SHIFT_RIGHT_ARROW		"\e[1;2C"		// Move cursor to end of line
+# define SLCT_HOME					"\e[H"			// Move cursor to end of line
 # define SLCT_LEFT_ARROW			"\e[D"			// Cursor move left
 # define SLCT_OPT_LEFT_ARROW		"\eb"			// Cursor move left by word
 # define SLCT_CTRL_CMD_LEFT_ARROW	"\e[1;5D"
 # define SLCT_SHIFT_LEFT_ARROW		"\e[1;2D"		// Cursor move ot start of line
+# define SLCT_END					"\e[F"		// Cursor move ot start of line
 
 /*
 ** Copy special keys
@@ -83,7 +85,7 @@
 # define SLCT_HTAB					"\t"			// Autocomplition
 # define SLCT_ESC_V					"\ev"			// Paste from clipboard
 
-# define SLCT_KSEQ_COUNT			10
+# define SLCT_KSEQ_COUNT			12
 # define SLCT_KSEQ_STR				create_kseq_str()
 
 
