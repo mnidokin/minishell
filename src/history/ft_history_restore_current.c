@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fire_abort_code_key.c                              :+:      :+:    :+:   */
+/*   ft_history_restore_current.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 02:22:34 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/30 05:46:00 by tvanessa         ###   ########.fr       */
+/*   Created: 2020/12/30 05:45:46 by tvanessa          #+#    #+#             */
+/*   Updated: 2020/12/30 05:45:49 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_term.h"
+#include "ft_sh_history.h"
 
-t_uc	fire_abort_code_key(char *key, char **line)
+t_uc	ft_history_restore_current(void)
 {
-	if ((ft_strequ(key, "\x03")))
-	{
-		ft_term_send_command("cr");
-		ft_term_send_command("do");
-		if (*line)
-			ft_strdel(line);
-		if (g_term.cmd_len)
-		{
-			g_term.screen.cursor_pos[1] -= g_term.cmd_len;
-			g_term.cmd_len = 0;
-		}
-		ft_bzero(key, 9);
-		key[0] = '\r';
-		ft_history_restore_current();
-		return (SUCCESS);
-	}
-	return (FAIL);
+	t_history *history;
+
+	if (!(history = ft_history(NULL)))
+		return (FAIL);
+	while (history->current->next)
+		history->current = history->current->next;
+	return(SUCCESS);
 }

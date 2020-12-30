@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sh_history.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mozzart <mozzart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:12:18 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/21 01:33:57 by mozzart          ###   ########.fr       */
+/*   Updated: 2020/12/30 05:44:31 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ t_uc		ft_init_history(void);
 t_history	*ft_history(t_history **history);
 t_uc		ft_history_save(void);
 t_uc		ft_history_destroy(t_history **history, t_uc err);
+t_uc		ft_history_restore_current(void);
 
 #endif

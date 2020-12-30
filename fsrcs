@@ -30,6 +30,7 @@ src/ft_str_addchar.c
 src/ft_unsetenv.c
 src/history/ft_history.c
 src/history/ft_history_destroy.c
+src/history/ft_history_restore_current.c
 src/history/ft_history_save.c
 src/history/ft_init_history.c
 src/main.c
