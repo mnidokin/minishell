@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:56:49 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/29 03:12:31 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/30 04:39:58 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static t_uc	is_spec_key(char *c, char **cmd)
 {
 	static char sequence[9] = {0};
 	size_t		seq_len;
-	if (c[0] == '\e')
+
+	 if (c[0] == '\e')
 	{
 		if (sequence[0])
 			ft_strclr(sequence);
@@ -42,7 +43,7 @@ static t_uc	is_spec_key(char *c, char **cmd)
 	if (ft_key_action(sequence, cmd) && ft_strcpy(c, sequence))
 	{
 		ft_strclr(sequence);
-		if (ft_strequ(c, "\r"))
+		if (ft_strequ(c, "\r") && ft_is_quoted(*cmd))
 		{
 			if (g_term.cmd_len == 0)
 			{
@@ -51,6 +52,14 @@ static t_uc	is_spec_key(char *c, char **cmd)
 				*cmd = NULL;
 			}
 			return (SH_EOCMD);
+		}
+		else if (*cmd && !ft_is_quoted(*cmd) && ft_strequ(c, "\r"))
+		{
+			ft_str_addchr(cmd, '\n', g_term.cmd_len, g_term.screen.cursor_pos[1]
+							- ft_strlen(ft_get_promt()) - 1);
+			// g_term.screen.cursor_pos[1] = 0;
+			ft_cursor_pos(&(g_term.fd), &(g_term.screen.cursor_pos[0]));
+			++g_term.cmd_len;
 		}
 		return (SH_SPEC_KEY);
 	}
@@ -106,7 +115,7 @@ void		ft_cmd_read(char **cmd)
 			break ;
 		if ((err = is_spec_key((char*)c, cmd)) && err == SH_EOCMD)
 			break ;
-		else if (err == SH_SPEC_KEY)
+		else if (err == SH_SPEC_KEY || !c[0])
 			continue;
 		ft_str_addchr(cmd, c[0], g_term.cmd_len, g_term.screen.cursor_pos[1]
 						- ft_strlen(ft_get_promt()) - 1);

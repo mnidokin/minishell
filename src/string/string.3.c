@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 18:59:45 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/09 21:55:34 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/30 04:42:19 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_us	ft_is_quoted(char *str)
 
 	single_q = 0;
 	double_q = 0;
+	if (!str)
+		return (1);
 	while (*str)
 	{
 		if (*str == '\'' && *(str - 1) != '\\' && !double_q)

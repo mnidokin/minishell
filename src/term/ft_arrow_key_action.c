@@ -6,16 +6,30 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:49:04 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/26 02:27:21 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/30 04:29:29 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_term.h"
 
+static void	enter_icanon(void)
+{
+	t_uc	err;
+
+	if ((err = ft_term_init(&g_term.fd, &g_term.screen)))
+	{
+		if (err > 6)
+			ft_term_deinit(&g_term.fd, &g_term.screen);
+		exit(err);
+	}
+}
+
 static void	ft_print_history_line(char *line)
 {
+	ft_term_deinit(&(g_term.fd), &(g_term.screen));
 	if (line)
 		ft_dprintf(g_term.fd.out, "%s", line);
+	enter_icanon();
 	g_term.cmd_len = ft_strlen(line);
 	g_term.screen.cursor_pos[1] += g_term.cmd_len;
 }

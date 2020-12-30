@@ -6,7 +6,7 @@
 /*   By: tvanessa <tvanessa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 00:53:43 by tvanessa          #+#    #+#             */
-/*   Updated: 2020/12/29 02:24:07 by tvanessa         ###   ########.fr       */
+/*   Updated: 2020/12/30 03:50:10 by tvanessa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@
 # define SLCT_KSEQ_STR				create_kseq_str()
 
 
-# define SH_EOCMD					1
-# define SH_SPEC_KEY				2
-# define SH_WAIT_SEQ				3
+# define SH_EOCMD					0b001
+# define SH_SPEC_KEY				0b010
+# define SH_WAIT_SEQ				0b100
+# define SH_QUOTE					0b110
 
 /*
 ** Control Siquence Itroducer or '[' char
