@@ -41,7 +41,7 @@ int	ft_search_redirect_symbol(char **cmd)
 			return (index);
 		index++;
 	}
-	return (EXIT_FAILURE);
+	return (-1);
 }
 
 void	ft_redirect_openfile(char *file_name, int redirection)
@@ -59,7 +59,7 @@ void	ft_redirect_openfile(char *file_name, int redirection)
 		fd = open(file_name, O_RDONLY);
 		dup2(fd, 0);
 	}
-	if (redirection == REDIRECT_STD_OUTPUT)
+	else
 	{
 		fd = open(file_name, O_CREAT | O_RDWR | O_TRUNC,
 				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);

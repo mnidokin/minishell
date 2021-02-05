@@ -10,13 +10,13 @@ int spawn_proc (int in, int out, char *cmd, char **env)
 	{
 		if (in != 0)
 		{
-			dup2 (in, 0);
-			close (in);
+			dup2(in, 0);
+			close(in);
 		}
 		if (out != 1)
 		{
-			dup2 (out, 1);
-			close (out);
+			dup2(out, 1);
+			close(out);
 		}
 		char **cmd_prm = ft_cmd_split(cmd);
 		if (ft_search_redirect(cmd_prm) == EXIT_SUCCESS)
@@ -32,7 +32,7 @@ int spawn_proc (int in, int out, char *cmd, char **env)
 	return (res);
 }
 
-int	fork_pipes (char *cmd, char **env)
+int	fork_pipes(char *cmd, char **env)
 {
   int i;
   int val_num;
@@ -54,16 +54,10 @@ int	fork_pipes (char *cmd, char **env)
 	if (in != 0)
 		dup2 (in, 0);
 	char **cmd_prm = ft_cmd_split(cmd_pipes[i]);
-/* 	ft_putstr(COLOR_RED);
-	int index = 0;
-	while (cmd_prm[index])
-	{
-		ft_putendl(cmd_prm[index]);
-		index++;
-	}
-	ft_putstr(COLOR_FLUSH); */
 	if (ft_search_redirect(cmd_prm) == EXIT_SUCCESS)
+	{
 		return (ft_redirect(cmd_prm, &env, in));
+	}
 	else
 		return (ft_exe_notbuiltin(&env, cmd_prm, res));
 }

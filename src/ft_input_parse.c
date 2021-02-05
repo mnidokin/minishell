@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 22:27:19 by mozzart           #+#    #+#             */
-/*   Updated: 2020/12/27 16:44:05 by mnidokin         ###   ########.fr       */
+/*   Updated: 2021/02/03 19:10:07 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_multiple_input(char **multiple_cmd, char ***env)
 	{
 		if (!(cmd_prm = ft_cmd_split(multiple_cmd[iter])))
 				exit(2);
-		if (ft_search_redirect_symbol(cmd_prm) == EXIT_FAILURE && ((res = ft_builtin(cmd_prm, env)) == EXIT_SUCCESS))
+		if (ft_search_redirect_symbol(cmd_prm) == -1 && ((res = ft_builtin(cmd_prm, env)) == EXIT_SUCCESS))
 		{
 			return (EXIT_SUCCESS);
 		}
@@ -43,7 +43,7 @@ int		ft_multiple_input(char **multiple_cmd, char ***env)
 			return (-1);
 		if ((pid = fork()) == 0)
 		{
-			if (ft_pipe_check(multiple_cmd[iter]) == EXIT_SUCCESS || ft_redirect_check(multiple_cmd[iter]) == EXIT_SUCCESS)
+			if (ft_pipe_check(multiple_cmd[iter]) == EXIT_SUCCESS || ft_redirect_check(multiple_cmd[iter]) != -1)
 			{
 				res = fork_pipes(multiple_cmd[iter], *env);
 			}

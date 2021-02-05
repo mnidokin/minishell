@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:55:37 by mnidokin          #+#    #+#             */
-/*   Updated: 2020/12/27 16:17:48 by mnidokin         ###   ########.fr       */
+/*   Updated: 2021/02/03 23:49:20 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,5 +215,11 @@ void	ft_redirect_openfile(char *name, int redirection);
 int	ft_redirect_isinput(char **cmd);
 int	ft_redirect_check(char *cmd_line);
 int	ft_search_symbol(char **str_arr, char *symbol);
+void	ft_here_doc_open_file(int redirection_symbol, char **cmd_prm);
+void	ft_here_doc_readline(int fd, char *eof_string);
+int		ft_here_doc(char **cmd);
 
+int	ft_manage_file_descriptors(char **cmd);
+int	ft_get_file_descriptor_pos(char **cmd);
+int	ft_is_file_descriptor_aggr(char **cmd);
 #endif

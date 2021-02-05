@@ -13,10 +13,20 @@ int	ft_redirect(char **cmd_prm, char ***env, int fd)
 	if (ft_search_symbol(cmd_prm, "<") == EXIT_SUCCESS)
 		fd = REDIRECT_STD_INPUT;
 	else if (ft_search_symbol(cmd_prm, ">>") == EXIT_SUCCESS)
-	{
 		fd = REDIRECT_STD_OUTPUT_ADD;
+	if (ft_search_symbol(cmd_prm, "<<") == EXIT_SUCCESS)
+	{
+		ft_here_doc(cmd_prm);
 	}
-	ft_redirect_openfile(redirection_file, fd);
+	else if (ft_is_file_descriptor_aggr(cmd_prm) == 1)
+	{
+		if (ft_manage_file_descriptors(cmd_prm) == -1)
+			return (-1);
+	}
+	else
+	{
+		ft_redirect_openfile(redirection_file, fd);
+	}
 	cmd_prm[redirection_symbol] = 0;
 	return (ft_exe_notbuiltin(env, cmd_prm, res));
 }
