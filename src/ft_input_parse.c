@@ -6,7 +6,7 @@
 /*   By: mnidokin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 22:27:19 by mozzart           #+#    #+#             */
-/*   Updated: 2021/02/03 19:10:07 by mnidokin         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:45:32 by mnidokin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_multiple_input(char **multiple_cmd, char ***env)
 			return (-1);
 		if ((pid = fork()) == 0)
 		{
-			if (ft_pipe_check(multiple_cmd[iter]) == EXIT_SUCCESS || ft_redirect_check(multiple_cmd[iter]) != -1)
+			if (ft_pipe_check(multiple_cmd[iter]) == EXIT_SUCCESS || ft_redirect_check(multiple_cmd[iter]) == EXIT_SUCCESS)
 			{
 				res = fork_pipes(multiple_cmd[iter], *env);
 			}

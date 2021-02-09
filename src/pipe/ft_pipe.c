@@ -24,10 +24,14 @@ int spawn_proc (int in, int out, char *cmd, char **env)
 			res = ft_redirect(cmd_prm, &env, in);
 		}
 		else
+		{
 			res = ft_exe_notbuiltin(&env, cmd_prm, res);
+		}
 	}
 	else if (pid < 0)
+	{
 		return (-1);
+	}
 	wait(&pid);
 	return (res);
 }
@@ -66,7 +70,7 @@ int	ft_pipe_arg_num(char **pipe_ar)
 {
 	int res;
 
-	res = 0;
+	res = 1;
 	if (pipe_ar != NULL)
 	{
 		while (*pipe_ar)

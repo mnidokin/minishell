@@ -105,7 +105,8 @@ int	ft_redirect_check(char *cmd_line)
 	{
 		if (cmd_line[index] == '>' || cmd_line[index] == '<')
 		{
-			return (EXIT_SUCCESS);
+				if (cmd_line[index + 1] && cmd_line[index - 1])
+					return (EXIT_SUCCESS);
 		}
 		index++;
 	}
