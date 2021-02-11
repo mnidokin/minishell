@@ -62,15 +62,14 @@ int	fork_pipes(char *cmd, char **env)
 	{
 		return (ft_redirect(cmd_prm, &env, in));
 	}
-	else
-		return (ft_exe_notbuiltin(&env, cmd_prm, res));
+	return (ft_exe_notbuiltin(&env, cmd_prm, res));
 }
 
 int	ft_pipe_arg_num(char **pipe_ar)
 {
 	int res;
 
-	res = 1;
+	res = 0;
 	if (pipe_ar != NULL)
 	{
 		while (*pipe_ar)

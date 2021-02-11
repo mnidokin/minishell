@@ -23,10 +23,7 @@ int	ft_redirect(char **cmd_prm, char ***env, int fd)
 		if (ft_manage_file_descriptors(cmd_prm) == -1)
 			return (-1);
 	}
-	else
-	{
-		ft_redirect_openfile(redirection_file, fd);
-	}
+	ft_redirect_openfile(redirection_file, fd);
 	cmd_prm[redirection_symbol] = 0;
 	return (ft_exe_notbuiltin(env, cmd_prm, res));
 }
